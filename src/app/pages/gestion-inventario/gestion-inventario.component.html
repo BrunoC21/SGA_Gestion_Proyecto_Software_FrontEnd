@@ -21,6 +21,12 @@
                 </select>
                 <p> productos</p>
             </div>
+
+            <div class="container-buttons">
+                <button id="eliminar" popovertarget="popup-eliminar"><i class='bx bx-minus'></i></button>
+                <button id="modificar" popovertarget="popup-modificar"><i class='bx bxs-edit'></i></button>
+                <button id="agregar" popovertarget="popup-agregar"><i class='bx bx-plus'></i></button>
+            </div>
     
             <div class="container-search">
                 <input type="text" placeholder="Buscar...">
@@ -55,5 +61,40 @@
         </div>
     </section>
 
+    <div class="pop-ups-fondo" popover id="popup-eliminar">
+        <div class="container-pop-up">
+            <div class="bar-sup">
+                <h2>Eliminar un producto</h2>
+                <button popovertarget="popup-eliminar" popovertargetaction="hide"><i class='bx bx-x'></i></button>
+            </div>
+            <div class="form-eliminar">
+
+            </div>
+        </div>
+
+    </div>
+    <div class="pop-ups-fondo"popover id="popup-modificar">
+        <div class="container-pop-up">
+            <div class="bar-sup">
+                <h2>Modificar un producto</h2>
+                <button popovertarget="popup-modificar" popovertargetaction="hide"><i class='bx bx-x'></i></button>
+            </div>
+            <div class="form-modificar">
+
+            </div>
+        </div>
+    </div>
+    <div class="pop-ups-fondo"popover id="popup-agregar">
+        <div class="container-pop-up">
+            <div class="bar-sup">
+                <h2>Agregar un producto</h2>
+                <button popovertarget="popup-agregar" popovertargetaction="hide"><i class='bx bx-x'></i></button>
+            </div>
+            <div class="form-agregar">
+
+            </div>
+        </div>
+        
+    </div>
 </body>
 </html>

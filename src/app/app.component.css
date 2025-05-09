@@ -3,7 +3,7 @@
     box-sizing:border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Courier New', Courier, monospace;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
@@ -33,6 +33,7 @@ body{
 .divisor{
     background-color: #008F00;
     height: 2.5vh;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header .nav-links{
@@ -52,4 +53,126 @@ body{
 .header .nav-links li i:hover{
     color: rgb(218, 218, 218);
     transform: scale(1.1);
+}
+
+footer{
+    position: absolute;
+    display: flex;
+    justify-content:space-between; 
+    bottom: 3vh;
+    width: 100vw;
+    height: 35vh;
+    border-top: #00c900 solid 0.5vh;
+    background-color:#008F00;
+}
+
+.logo-footer{
+    height: 35vh;
+    width: 18vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;     
+}
+
+.logo-footer img{
+    height: 20vh;
+    width: 20vh;
+    border-radius: 1em;
+}
+
+.logo-footer h3{
+    padding: 10px 10px;
+    color: white;
+}
+
+.footer-redes-sociales{
+    display: flex;
+    width: 12vw;
+    justify-content:space-evenly; 
+    align-items: center;     
+}
+
+.footer-redes-sociales a{
+    background-color: white;
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 5em;
+    display: flex;
+    justify-content: center; 
+    align-items: center;  
+    text-decoration: none;
+}
+
+.footer-redes-sociales i{
+    color: #008F00;
+    font-size: 20px;
+}
+
+.informacion{
+    width: 35vw;
+    display: flex;
+    flex-direction: column;
+    justify-content:center; 
+    align-items:center;
+}
+
+.informacion h3{
+    color: white;
+    padding: 13px 10px;
+    font-size: 18px;
+    border-bottom: solid 0.4vh white;
+    margin-bottom: 1vh;
+    margin-top: -8vh;
+}
+
+.informacion p{
+    width: 30vw;
+    font-size: 13px;
+    padding: 10px 3vw;
+    text-align: justify;
+    color: white;
+    font-weight: 700;
+    margin-left: 3vw;
+}
+
+.preguntas-frecuentes{
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;  
+}
+
+.preguntas-frecuentes h4{
+    color: white;
+    padding: 13px 10px;
+    font-size: 18px;
+    border-bottom: solid 0.4vh white;
+    margin-bottom: 1vh;
+    margin-top: -3vh;
+}
+
+.preguntas-frecuentes a{
+    text-decoration: none;
+    color: white;
+    padding: 15px 4vw;
+}
+
+.preguntas-frecuentes a:hover{
+    background-color: #005200;
+    border-radius:0.5em;
+    border: none;
+}
+
+.end-page{
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #005200;
 }

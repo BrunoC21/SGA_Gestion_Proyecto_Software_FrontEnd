@@ -58,6 +58,116 @@ body{
     outline: none;
 }
 
+.container-buttons{
+    margin-top: 6vh;
+    margin-left: 32vw;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-buttons button{
+    width: 2vw;
+    height: 2vw;
+    border-radius: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 5px;
+}
+
+.container-buttons button i{
+    font-size: 16px;
+    color: white;   
+}
+
+#eliminar{
+    background-color: rgb(201, 61, 61);
+    border: solid rgb(172, 27, 27) 2px;
+    cursor: pointer;
+}
+
+#eliminar:hover{
+    background-color: rgb(185, 42, 42);
+    border: solid rgb(143, 11, 11) 2px;
+}
+
+#modificar{
+    background-color: rgb(42, 155, 221);
+    border: solid rgb(34, 128, 182) 2px;
+    cursor: pointer;
+}
+
+#modificar:hover{
+    background-color: rgb(17, 133, 201);
+    border: solid rgb(15, 96, 143) 2px;
+}
+
+#agregar{
+    background-color: rgb(33, 179, 65);
+    border: solid rgb(14, 150, 43) 2px;
+    cursor: pointer;
+}
+
+#agregar:hover{
+    background-color: rgb(15, 165, 48);
+    border: solid rgb(3, 121, 28) 2px;
+}
+
+.pop-ups-fondo{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.274) ;
+}
+
+.container-pop-up{
+    background-color: #DFDFDF;
+    width: 60vw;
+    height: 80vh;
+    position: absolute;
+    top: 10vh;
+    left: 20vw;
+    border-radius: 0.5em;
+}
+
+.container-pop-up .bar-sup{
+    width: 60vw;
+    height: 7vh;
+    background-color: #00AD00;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0.5em 0.5em 0em 0em;
+}
+
+.container-pop-up .bar-sup h2{
+    padding: 5px 20vw;
+    color: white;
+}
+
+.container-pop-up .bar-sup button{
+    width: 1.8vw;
+    height: 1.8vw;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5em;
+    margin-right: 0.5vw;
+    border: solid #DFDFDF 2px;
+}
+
+.container-pop-up .bar-sup button:hover{
+    background-color: rgb(223, 223, 223);
+    border: solid #bebebe 2px;
+}
+
+.container-pop-up .bar-sup i{
+    color: #00AD00;
+    font-size: 18px;
+}
+
 .container-search {
     display: flex;
     align-items: center;
