@@ -41,6 +41,7 @@
                         <th>Id</th>
                         <th id="name">Nombre</th>
                         <th id="description">Descripción</th>
+                        <th>N° Lote</th>
                         <th>Tipo de medicamento</th>
                         <th>Unidad de medida</th>
                         <th>Stock actual</th>
@@ -55,6 +56,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
@@ -62,36 +64,93 @@
     </section>
 
     <div class="pop-ups-fondo" popover id="popup-eliminar">
-        <div class="container-pop-up">
+        <div class="container-pop-up" id="pop-up-eliminar">
             <div class="bar-sup">
                 <h2>Eliminar un producto</h2>
                 <button popovertarget="popup-eliminar" popovertargetaction="hide"><i class='bx bx-x'></i></button>
             </div>
             <div class="form-eliminar">
-
+                <label for="ID-eliminar">ID del producto</label>
+                <input type="text" id="ID-eliminar">
+                <button id="btn-eliminar">Eliminar</button>
             </div>
         </div>
 
     </div>
     <div class="pop-ups-fondo"popover id="popup-modificar">
-        <div class="container-pop-up">
+        <div class="container-pop-up" id="pop-up-mod">
             <div class="bar-sup">
                 <h2>Modificar un producto</h2>
                 <button popovertarget="popup-modificar" popovertargetaction="hide"><i class='bx bx-x'></i></button>
             </div>
-            <div class="form-modificar">
-
+            <div class="forms">
+                <form action="" id="form-mod">
+                    <label for="" id="label-id-mod">ID del producto</label>
+                    <input type="text" id="id-modificar">
+                    <label for="" class="titulos-form">Nombre del producto</label>
+                    <input type="text" id="nombre-mod">
+                    <label for="" class="titulos-form">Descripción del producto</label>
+                    <textarea name="" id="descripcion-mod"></textarea>
+                    <label for="" class="titulos-form">Lote del producto</label>
+                    <input type="text" id="lote-mod">
+                    <label for="" class="titulos-form">Tipo de producto</label>
+                    <input type="text" id="tipo-mod">
+                    <label for="" class="titulos-form">Unidad de medida</label>
+                    <select name="" id="unidad-mod">
+                        <option value="mg">mg (miligramos)</option>
+                        <option value="g">g (gramos)</option>
+                        <option value="mL">mL (mililitros)</option>
+                        <option value="UI">UI (Unid. intern.)</option>
+                        <option value="mcg">mcg (microgramos)</option>
+                    </select>
+                    <label for="" class="titulos-form">Stock del producto</label>
+                    <input type="text" id="stock-mod">
+                    <button id="btn-mod">Modificar</button>
+                </form>
+                <div class="imagen-producto-mod">
+                    <div class="fondo-imagen">
+                        <img src="/src/app/images/imagen_defecto.png" alt="">
+                    </div>         
+                    <input type="file">
+                </div>
             </div>
         </div>
     </div>
+
     <div class="pop-ups-fondo"popover id="popup-agregar">
         <div class="container-pop-up">
             <div class="bar-sup">
                 <h2>Agregar un producto</h2>
                 <button popovertarget="popup-agregar" popovertargetaction="hide"><i class='bx bx-x'></i></button>
             </div>
-            <div class="form-agregar">
-
+            <div class="forms">
+                <form action="" id="form-agregar">
+                    <label for="" class="titulos-form" id="label-nombre-agregar">Nombre del producto</label>
+                    <input type="text" id="nombre-agregar">
+                    <label for="" class="titulos-form">Descripción del producto</label>
+                    <textarea name="" id="descripcion-agregar"></textarea>
+                    <label for="" class="titulos-form">Lote del producto</label>
+                    <input type="text" id="lote-agregar">
+                    <label for="" class="titulos-form">Tipo de producto</label>
+                    <input type="text" id="tipo-agregar">
+                    <label for="" class="titulos-form">Unidad de medida</label>
+                    <select name="" id="unidad-agregar">
+                        <option value="mg">mg (miligramos)</option>
+                        <option value="g">g (gramos)</option>
+                        <option value="mL">mL (mililitros)</option>
+                        <option value="UI">UI (Unid. intern.)</option>
+                        <option value="mcg">mcg (microgramos)</option>
+                    </select>
+                    <label for="" class="titulos-form">Stock del producto</label>
+                    <input type="text" id="stock-agregar">
+                    <button id="btn-agregar">Agregar</button>
+                </form>
+                <div class="imagen-producto-agregar">
+                    <div class="fondo-imagen">
+                        <img src="/src/app/images/imagen_defecto.png" alt="">
+                    </div>         
+                    <input type="file">
+                </div>
             </div>
         </div>
         
