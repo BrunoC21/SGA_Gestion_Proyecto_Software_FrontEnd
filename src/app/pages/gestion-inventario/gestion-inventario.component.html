@@ -14,12 +14,18 @@
         <div class="section-sup">
             <div class="number-products">
                 <label for="num">Mostrar </label>
-                <select name="" id="num">
+                <select name="" id="num" [(ngModel)]="selectedLimit">
                     <option value="5">5</option>
                     <option value="10">10</option>
-                    <option value="20">20</option>
+                    <option value="15">15</option>
                 </select>
                 <p> productos</p>
+            </div>
+
+            <div class="paginacion">
+                <button (click)="currentPage = currentPage - 1" [disabled]="currentPage === 1"><i class='bx bx-chevron-left'></i></button>
+                    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+                <button (click)="currentPage = currentPage + 1" [disabled]="currentPage === totalPages"><i class='bx bx-chevron-right'></i></button>
             </div>
 
             <div class="container-buttons">
@@ -29,8 +35,7 @@
             </div>
     
             <div class="container-search">
-                <input type="text" placeholder="Buscar...">
-                <button><i class='bx bx-search-alt-2'></i></button>
+                <input type="text" name="buscar" placeholder="Buscar..." [(ngModel)]="filterPost">
             </div>
         </div>
 
@@ -49,14 +54,14 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <tr *ngFor="let post of posts | filter:filterPost | paginate:currentPage:selectedLimit | limit:selectedLimit">
+                        <td>{{post.id}}</td>
+                        <td>{{post.name}}</td>
+                        <td>{{post.descripcion}}</td>
+                        <td>{{post.lote}}</td>
+                        <td>{{post.tipo}}</td>
+                        <td>{{post.medida}}</td>
+                        <td>{{post.stock}}</td>
                     </tr>
                 </tbody>
             </table>

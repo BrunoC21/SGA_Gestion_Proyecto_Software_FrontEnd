@@ -1,0 +1,170 @@
+*{
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body{
+    background-color: #DFDFDF;
+}
+
+.usuarios{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 90vh;
+}
+
+.container-foto-nombre{
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
+    height: 100vh;
+    align-items: center;
+}
+
+.fondo-imagen{
+    width: 18vw;
+    height: 18vw;
+    border-radius: 10em;
+    background-color: white;
+    margin-top: 25vh;
+}
+
+#nombre-usuario{
+    display: flex;
+    margin-top: 3vh;
+    align-items: center;
+    padding: 12px 40px;
+    background-color: #008F00;
+    border-radius: 2em;
+    font-size: 16px;
+    color: white;
+}
+
+#btn-imagen{
+    display: flex;
+    width: 3vw;
+    height: 3vw;
+    margin-left: 14.25vw;
+    border-radius: 3em;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: #00AD00;
+    outline: none;
+    cursor: pointer;
+}
+
+#btn-imagen:hover{
+    background-color: #008100;
+}
+
+#btn-imagen i{
+    color: white;
+    font-size: 3.2vh;
+}
+
+.container-beneficios{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    height: 100vh;
+    align-items: center;
+}
+
+.beneficios{
+   margin-top: 17vh;
+   width: 18vw;
+   height: 30vh;
+}
+
+.compras{
+    margin-top: 5vh;
+    width: 18vw;
+    height: 30vh;
+}
+
+.beneficios table,
+.compras table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 15px;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white; 
+}
+
+.beneficios th,
+.compras th{
+    padding: 10px 17px;
+    background-color: #008100;
+}
+
+.beneficios td,
+.compras td{
+    padding: 10px 17px;
+}
+
+.container-datos{
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
+    height: 100vh;
+    align-items: center;
+}
+
+.datos{
+    width: 25vw;
+    height: 65vh;   
+    margin-top: 17vh;
+    background-color: white;
+    border-radius: 1em;
+}
+
+.datos h2{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding: 10px 17px;
+    background-color: #008F00;
+    color: white;
+    border-radius: 0.5em 0.5em 0em 0em;
+}
+
+.titulos-datos{
+    color: rgb(0, 0, 0);
+    margin-top: 2vh;
+    margin-left: 2vw;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.data-datos{
+    width: 19vw;
+    height: 4vh;
+    margin-top: 1vh;
+    margin-left: 3vw;
+    border-radius: 0.5em;
+    background-color: #DFDFDF;
+}
+
+#btn-editar{
+    width: 5vw;
+    height: 4vh;
+    margin-top: 3vh;
+    margin-left: 17vw;
+    background-color: #019901;
+    border-radius: 0.5em;
+    border: solid #016801 0.15em;
+    color: white;
+    font-size: 14px;
+}
+
+#btn-editar:hover{
+    background-color: #016e01;
+    border: solid #004200 0.15em;
+}

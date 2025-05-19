@@ -174,7 +174,7 @@ body{
     padding: 5px 20px;
     border-radius: 10px;
     width: fit-content;
-    margin-top: 5vh;
+    margin-top: 6vh;
 }
 
 .container-search input {
@@ -456,4 +456,32 @@ thead th:last-child {
 #btn-eliminar:hover{
     background-color: rgb(185, 42, 42);
     border: solid rgb(143, 11, 11) 2px;
+}
+
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 7.5vh;
+    margin-left: 1vw;
+}
+
+.paginacion button {
+    display: flex;
+    padding: 0.45vw;
+    background-color: #00AD00;
+    color: white;
+    border: none;
+    border-radius: 2em;
+    cursor: pointer;
+}
+
+.paginacion button:hover{
+    background-color: #018a01;
+}
+
+.paginacion button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
