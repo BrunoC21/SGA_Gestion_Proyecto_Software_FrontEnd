@@ -12,12 +12,14 @@ export interface Warehouse {
   providedIn: 'root'
 })
 export class SucursalService {
-  private baseUrl = `${this.apiUrl}/api/warehouse`;
+  private baseUrl: string;
 
   constructor(
     private http: HttpClient,
     @Inject('API_URL') private apiUrl: string
-  ) {}
+  ) {
+    this.baseUrl = `${this.apiUrl}/api/warehouse`;
+    }
 
   create(warehouse: Warehouse): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/create`, warehouse);

@@ -14,31 +14,33 @@ export interface Products {
   providedIn: 'root'
 })
 export class MedicamentoService {
-  private baseUrl = `${this.apiUrl}/api/products`;
+  private baseUrl: string;
 
   constructor(
     private http: HttpClient,
     @Inject('API_URL') private apiUrl: string
-  ) {}
+  ) {
+    this.baseUrl = `${this.apiUrl}/api/products`;
+  }
 
   create(products: Products): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/create`, products);
   }
 
   getAll(): Observable<Products[]> {
-      return this.http.get<Products[]>(`${this.baseUrl}/all`);
-    }
-  
-    getById(id: number): Observable<Products> {
-      return this.http.get<Products>(`${this.baseUrl}/search/${id}`);
-    }
-  
-    update(id: number, products: Products): Observable<Products> {
-      return this.http.put<Products>(`${this.baseUrl}/update/${id}`, products);
-    }
-  
-    delete(id: number): Observable<any> {
-      return this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' });
-    }
+    return this.http.get<Products[]>(`${this.baseUrl}/all`);
+  }
 
+  getById(id: number): Observable<Products> {
+    return this.http.get<Products>(`${this.baseUrl}/search/${id}`);
+  }
+
+  update(id: number, products: Products): Observable<Products> {
+    return this.http.put<Products>(`${this.baseUrl}/update/${id}`, products);
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' });
+  }
 }
+

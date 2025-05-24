@@ -15,12 +15,14 @@ export interface Inventory {
   providedIn: 'root'
 })
 export class InventarioService {
-  private baseUrl = `${this.apiUrl}/api/inventory`;
+  private baseUrl: string;
 
   constructor(
     private http: HttpClient,
     @Inject('API_URL') private apiUrl: string
-  ) {}
+  ) {
+    this.baseUrl = `${this.apiUrl}/api/inventory`;
+    }
 
   create(inventory: Inventory): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/create`, inventory);
