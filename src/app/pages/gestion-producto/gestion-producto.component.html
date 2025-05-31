@@ -53,11 +53,16 @@
 
                 <tbody>
                     <tr *ngFor="let post of posts | filter:filterPost | paginate:currentPage:selectedLimit | limit:selectedLimit">
-                        <td>{{post.id}}</td>
-                        <td>{{post.name}}</td>
-                        <td>{{post.descripcion}}</td>
-                        <td>{{post.tipo}}</td>
-                        <td>{{post.medida}}</td>
+                        <td>{{ post.id }}</td>
+                        <td>{{ post.product_name }}</td>
+                        <td>{{ post.description }}</td>
+                        <td>{{ post.type }}</td>
+                        <td>{{ post.measure_unit }}</td>
+                        <td>
+                            <button (click)="openEditPopup(post)">
+                                <i class="bx bxs-edit"></i>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -78,45 +83,50 @@
         </div>
 
     </div>
-    <div class="pop-ups-fondo"popover id="popup-modificar">
+    <div class="pop-ups-fondo" popover id="popup-modificar">
         <div class="container-pop-up" id="pop-up-mod">
             <div class="bar-sup">
                 <h2>Modificar un producto</h2>
-                <button popovertarget="popup-modificar" popovertargetaction="hide"><i class='bx bx-x'></i></button>
+                <button popovertarget="popup-modificar" popovertargetaction="hide">
+                    <i class='bx bx-x'></i>
+                </button>
             </div>
             <div class="forms">
-                <form action="" id="form-mod">
-                    <label for="" id="label-id-mod">ID del producto</label>
-                    <input type="text" id="id-modificar">
-                    <label for="" class="titulos-form">Nombre del producto</label>
-                    <input type="text" id="nombre-mod">
-                    <label for="" class="titulos-form">Descripción del producto</label>
-                    <textarea name="" id="descripcion-mod"></textarea>
-                    <label for="" class="titulos-form">Lote del producto</label>
-                    <input type="text" id="lote-mod">
-                    <label for="" class="titulos-form">Tipo de producto</label>
-                    <input type="text" id="tipo-mod">
-                    <label for="" class="titulos-form">Unidad de medida</label>
-                    <select name="" id="unidad-mod">
+                <form id="form-mod" (ngSubmit)="updateProduct()" #formMod="ngForm">
+                    <label for="id-modificar">ID del producto</label>
+                    <input type="text" id="id-modificar" name="id" [(ngModel)]="editProduct.id" readonly />
+
+                    <label class="titulos-form">Nombre del producto</label>
+                    <input type="text" id="nombre-mod" name="product_name" [(ngModel)]="editProduct.product_name" required />
+
+                    <label class="titulos-form">Descripción del producto</label>
+                    <textarea id="descripcion-mod" name="description" [(ngModel)]="editProduct.description" required></textarea>
+
+                    <label class="titulos-form">Tipo de producto</label>
+                    <input type="text" id="tipo-mod" name="type" [(ngModel)]="editProduct.type" required />
+
+                    <label class="titulos-form">Unidad de medida</label>
+                    <select id="unidad-mod" name="measure_unit" [(ngModel)]="editProduct.measure_unit" required>
                         <option value="mg">mg (miligramos)</option>
                         <option value="g">g (gramos)</option>
                         <option value="mL">mL (mililitros)</option>
                         <option value="UI">UI (Unid. intern.)</option>
                         <option value="mcg">mcg (microgramos)</option>
                     </select>
-                    <label for="" class="titulos-form">Stock del producto</label>
-                    <input type="text" id="stock-mod">
-                    <button id="btn-mod">Modificar</button>
+
+                    <button type="submit" id="btn-mod">Modificar</button>
                 </form>
+
                 <div class="imagen-producto-mod">
                     <div class="fondo-imagen">
-                        <img src="/src/app/images/imagen_defecto.png" alt="">
-                    </div>         
-                    <input type="file">
+                        <img src="/src/app/images/imagen_defecto.png" alt="Imagen producto" />
+                    </div>
+                    <input type="file" />
                 </div>
             </div>
         </div>
     </div>
+
 
     <div class="pop-ups-fondo" popover id="popup-agregar">
         <div class="container-pop-up">

@@ -6,7 +6,6 @@ import { PaginatePipe } from '../../pipes/paginate.pipe';
 import { FormsModule } from '@angular/forms';
 import { MedicamentoService, Products } from '../../services/medicamento.service';
 
-
 @Component({
   selector: 'app-gestion-producto',
   standalone: true,
@@ -17,11 +16,19 @@ import { MedicamentoService, Products } from '../../services/medicamento.service
 export class GestionProductoComponent implements OnInit {
   currentPage = 1;
   selectedLimit = 5;
-  filterPost = "";
+  filterPost = '';
 
   posts: Products[] = [];
 
   newProduct: Products = {
+    product_name: '',
+    description: '',
+    type: '',
+    measure_unit: ''
+  };
+
+  editProduct: Products = {
+    id: 0,
     product_name: '',
     description: '',
     type: '',
@@ -62,14 +69,13 @@ export class GestionProductoComponent implements OnInit {
 
     if (product_name.trim() && description.trim() && type.trim() && measure_unit.trim()) {
       this.medicamentoService.create(this.newProduct).subscribe(() => {
-        this.loadProducts(); // recargar productos
+        this.loadProducts();
         this.newProduct = {
           product_name: '',
           description: '',
           type: '',
           measure_unit: ''
         };
-
         const popup = document.getElementById('popup-agregar') as HTMLElement;
         if (popup) popup.removeAttribute('popover');
       });
@@ -77,5 +83,28 @@ export class GestionProductoComponent implements OnInit {
       alert('Todos los campos son obligatorios.');
     }
   }
-}
 
+  openEditPopup(product: Products): void {
+    this.editProduct = { ...product };
+    const popup = document.getElementById('popup-modificar') as HTMLElement;
+    if (popup) popup.setAttribute('popover', 'auto');
+  }
+
+  updateProduct(): void {
+    if (
+      this.editProduct.id &&
+      this.editProduct.product_name.trim() &&
+      this.editProduct.description.trim() &&
+      this.editProduct.type.trim() &&
+      this.editProduct.measure_unit.trim()
+    ) {
+      this.medicamentoService.update(this.editProduct.id, this.editProduct).subscribe(() => {
+        this.loadProducts();
+        const popup = document.getElementById('popup-modificar') as HTMLElement;
+        if (popup) popup.removeAttribute('popover');
+      });
+    } else {
+      alert('Todos los campos son obligatorios para modificar.');
+    }
+  }
+}

@@ -25,6 +25,12 @@ export class GestionBodegaComponent implements OnInit{
     direction: ''
   };
 
+  editWarehouse: Warehouse = {
+    id: 0,
+    warehouse_Name: '',
+    direction: ''
+  }
+
   constructor(private sucursalService: SucursalService) {}
 
   ngOnInit(): void {
@@ -69,6 +75,28 @@ export class GestionBodegaComponent implements OnInit{
       });
     } else {
       alert('Todos los campos son obligatorios.');
+    }
+  }
+
+  openEditPopup(warehouse: Warehouse): void {
+    this.editWarehouse = { ...warehouse};
+    const popup = document.getElementById('popup-modificar') as HTMLElement;
+    if (popup) popup.setAttribute('popover', 'auto');
+  }
+
+  updateWarehouse(): void {
+    if(
+      this.editWarehouse.id &&
+      this.editWarehouse.warehouse_Name.trim() &&
+      this.editWarehouse.direction.trim()
+    ){
+      this.sucursalService.update(this.editWarehouse.id, this.editWarehouse).subscribe(() => {
+        this.loadWarehouses();
+        const popup = document.getElementById('popup-modificar') as HTMLElement;
+        if (popup) popup.removeAttribute('popover');
+      });
+    } else {
+      alert('Todos los campos son obligatorios para modificar.');
     }
   }
   
