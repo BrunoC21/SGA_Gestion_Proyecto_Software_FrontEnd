@@ -19,8 +19,8 @@ body{
     flex-direction: column;
     align-items: center;
     width: 35vw;
-    height: 90vh;
-    margin-top: 5vh;
+    height: 95vh;
+    margin-top: 2.5vh;
     background-color: blue;
     border-radius: 1em;
     border: solid #00AD00 0.2em;
@@ -53,12 +53,12 @@ body{
 
 .cont-form label{
     padding: 10px 25px;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .cont-form input{
     width: 28vw;
-    height: 4.5vh;
+    height: 4vh;
     border-radius: 0.25em;
     border: solid #dfdfdf 2.25px;
     margin-left: 2.5vw;
@@ -72,7 +72,7 @@ body{
     width: 35vw;
     align-items: center;
     justify-content: center;
-    margin-top: 2vh;
+    margin-top: 7vh;
 }
 
 button{
@@ -92,8 +92,9 @@ button:hover{
 
 .acceder{
     display: flex;
-    height: 2vh;
+    height: 1vh;
     width: 35vw;
+    font-size: 15px;
     align-items: center;
     justify-content: center;
 }
