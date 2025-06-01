@@ -72,20 +72,30 @@
             <h2>Ofertas Destacadas</h2>
         </div>
 
-        <div class="manual-carousel-wrapper">
-            <button class="manual-carousel-btn prev-manual">&#10094;</button>
+        <div class="product-carousel-wrapper">
 
-            <div class="manual-carousel-container">
-                <div class="manual-carousel-track" #manualCarouselTrack>
-                    <div class="manual-card" *ngFor="let producto of productos">
-                        <img [src]="producto.imagen" alt="medicamento">
-                        <h4>{{ producto.nombre }}</h4>
-                        <p>{{ producto.precio | currency:'CLP':'symbol':'1.0-0' }}</p>
-                    </div>
-                </div>
-            </div>
+  <div class="carousel-controls">
+    <button (click)="mostrarPrev()" class="carousel-arrow">&#10094;</button>
 
-  <button class="manual-carousel-btn next-manual">&#10095;</button>
+    <div class="product-carousel">
+      <div
+        class="product-card"
+        *ngFor="let producto of productos | sliceProducts: startIndex : 4"
+      >
+        <img [src]="producto.imagen" alt="{{ producto.titulo }}" class="product-img" />
+
+        <div class="product-info">
+          <h4 class="product-title">{{ producto.titulo }}</h4>
+          <p class="product-desc">{{ producto.descripcion }}</p>
+          <p class="product-price">$ {{ producto.precio}}</p>
+        </div>
+
+        <button class="add-to-cart">Agregar</button>
+      </div>
+    </div>
+
+    <button (click)="mostrarNext()" class="carousel-arrow">&#10095;</button>
+  </div>
 </div>
 
     </body>
