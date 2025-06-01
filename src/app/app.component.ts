@@ -4,6 +4,7 @@ import { GestionInventarioComponent } from "./pages/gestion-inventario/gestion-i
 import { GestionProductoComponent } from './pages/gestion-producto/gestion-producto.component';
 import { GestionBodegaComponent } from './pages/gestion-bodega/gestion-bodega.component';
 import { HomeComponent } from './pages/home/home.component';
+import { routes } from './app.routes';
 
 @Component({
   selector: 'app-root',
