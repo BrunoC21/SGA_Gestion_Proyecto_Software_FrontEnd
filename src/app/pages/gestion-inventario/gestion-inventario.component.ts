@@ -4,6 +4,11 @@ import { FilterPipe } from '../../pipes/filter.pipe';
 import { LimitPipe } from '../../pipes/limit-pipe.pipe';
 import { PaginatePipe } from '../../pipes/paginate.pipe';
 import { FormsModule } from '@angular/forms';
+import { InventarioService } from '../../services/inventario.service';
+import { MedicamentoService } from '../../services/medicamento.service';
+import { SucursalService } from '../../services/sucursal.service';
+import { SucursalInventarioService } from '../../services/sucursal-inventario.service';
+
 
 @Component({
   selector: 'app-gestion-inventario',
