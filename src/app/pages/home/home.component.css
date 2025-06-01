@@ -1,0 +1,264 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: #DFDFDF;
+}
+
+.cont-sup-btns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 55vh;
+}
+
+.cont-sup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 55vh;
+}
+
+.carousel-container {
+  width: 90vw;
+  height: 45vh;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  width: calc(90vw * 6); /* 6 slides */
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  width: 90vw;
+  height: 45vh;
+  object-fit: cover;
+}
+
+.carousel-btn {
+  background: transparent;       /* elimina color de fondo */
+  border: none;                  /* elimina bordes */
+  color: #00AD00;                   /* color de la flecha */
+  font-size: 3rem;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;                    /* sin relleno */
+  margin: 0 2vw;                 /* separación lateral desde el carrusel */
+  user-select: none;
+}
+
+.carousel-btn:hover{
+    color: #007c00; 
+}
+
+.carousel-dots {
+  padding-top: 2vh;
+  width: 100%;
+  text-align: center;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 6px;
+  background-color: #999999;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: #00AD00;
+}
+
+.cont-categorias{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 30vh;
+    background-color: #007c00;
+}
+
+.separado-catergorias{
+    width: 100vw;
+    height: 1vh;
+    background-color: #00c700;   
+}
+
+.cont-categorias h2{
+    padding: 20px 45px;
+    color: white;
+    font-size: 28px;
+}
+
+.cont-btns{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100vw;
+    height: 24vh;
+    margin-bottom: 5vh;
+}
+
+.cont-btn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20vw;
+}
+
+.cont-btn button{
+    width: 6vw;
+    height: 6vw;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.cont-btn button i{
+    color: white;
+    font-size: 36px;
+}
+
+#cat-1 {
+    background-color: #E57373;
+}
+
+#cat-1:hover{
+    background-color: #C62828;
+}
+
+#cat-2 {
+    background-color: #64B5F6;
+}
+
+#cat-2:hover{
+    background-color: #1976D2;
+}
+
+#cat-3 {
+    background-color: #81C784;
+}
+
+#cat-3:hover{
+    background-color: #388E3C;
+}
+
+#cat-4 {
+    background-color: #FFB74D;
+}
+
+#cat-4:hover{
+    background-color: #F57C00;
+}
+
+#cat-5 {
+    background-color: #FFD54F;
+}
+
+#cat-5:hover{
+    background-color: #FBC02D;
+}
+
+#cat-6 {
+    background-color: #BA68C8;
+}
+
+#cat-6:hover{
+    background-color: #8E24AA;
+}
+
+.cont-btn p{
+    margin-top: 2vh;
+    color: white;
+}
+
+.cont-ofertas{
+    display: flex;
+    width: 100vw;
+    height: 20vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.cont-ofertas h2{
+    display: flex;
+    width: 25vw;
+    height: 8vh;
+    background-color: #007c00;
+    color: white;
+    border-radius: 2em;
+    align-items: center;
+    justify-content: center;
+}
+
+.manual-carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+  position: relative;
+  width: 100%;
+}
+
+.manual-carousel-btn {
+  background-color: white;
+  border: 1px solid #ccc;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 5px 10px;
+  height: 100%;
+  z-index: 2;
+}
+
+.manual-carousel-container {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 80vw;
+}
+
+.manual-carousel-track {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  width: max-content;
+}
+
+.manual-card {
+  flex: 0 0 calc(80vw / 5 - 20px);
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.manual-card img {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.manual-card h4 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.manual-card p {
+  font-size: 14px;
+  font-weight: bold;
+  color: #00AD00;
+}

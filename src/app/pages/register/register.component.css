@@ -1,0 +1,99 @@
+*{
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body{
+    background-image: url(/src/app/images/fondo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+}
+
+.cont-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35vw;
+    height: 90vh;
+    margin-top: 5vh;
+    background-color: blue;
+    border-radius: 1em;
+    border: solid #00AD00 0.2em;
+    background-color: white;
+}
+
+.cont-titulo{
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
+    height: 7vh;
+    margin-top: -0.40vh;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #00AD00;
+    border-radius: 1em 1em 0em 0em;
+}
+
+.cont-form form{
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
+    height: 68vh;
+}
+
+#primer-label{
+    margin-top: 1.5vh;
+}
+
+.cont-form label{
+    padding: 10px 25px;
+    font-size: 16px;
+}
+
+.cont-form input{
+    width: 28vw;
+    height: 4.5vh;
+    border-radius: 0.25em;
+    border: solid #dfdfdf 2.25px;
+    margin-left: 2.5vw;
+    padding: 1vh;
+    outline: none;
+}
+
+.cont-btn{
+    display: flex;
+    height: 8vh;
+    width: 35vw;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2vh;
+}
+
+button{
+    width: 10vw;
+    height: 4vh;
+    border-radius: 0.75vh;
+    border: none;
+    background-color: #00AD00;
+    color: white;
+    font-size: 15px;
+    transition: background-color 0.2s ease 0.1s;
+}
+
+button:hover{
+    background-color: #008000;
+}
+
+.acceder{
+    display: flex;
+    height: 2vh;
+    width: 35vw;
+    align-items: center;
+    justify-content: center;
+}
