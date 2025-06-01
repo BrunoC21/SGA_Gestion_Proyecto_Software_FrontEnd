@@ -1,36 +1,34 @@
-<!DOCTYPE html>
+<header class="header">
+  <div id="logo">
+    <img src="./assets/images/icono.PNG" alt="logo" id="logo" />
+  </div>
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmacia</title>
-    <link rel="stylesheet" href="./app.component.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  </head>
-  <header class="header">
-    <div id="logo">
-      <img src="./images/icono.PNG" alt="logo" id="logo">
-    </div>
-  
-    <nav>
-      <ul class="nav-links">
-        <li><a href=""><i class='bx bx-cart'></i></a></li>
-        <li><a href=""><i class='bx bxs-user-circle'></i></a></li>
-        <li><i class='bx bx-menu' onclick="openMenu()"></i></li>
-      </ul>
-    </nav> 
-  </header>
-  <div class="divisor"></div>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#"><i class="bx bx-cart"></i></a></li>
+      <li><a href="#"><i class="bx bxs-user-circle"></i></a></li>
+      <li><i class="bx bx-menu" (click)="openMenu()"></i></li>
+    </ul>
+  </nav>
+</header>
 
+<div class="divisor"></div>
 
 <!-- Menú lateral desplegable -->
-<div id="side-menu-overlay" class="menu-overlay hidden" onclick="closeMenu()">
-  <div id="side-menu" class="side-menu" onclick="event.stopPropagation()">
-    <span class="close-btn" onclick="closeMenu()">&#10005;</span>
+<div
+  id="side-menu-overlay"
+  class="menu-overlay hidden"
+  (click)="closeMenu()"
+>
+  <div
+    id="side-menu"
+    class="side-menu"
+    (click)="$event.stopPropagation()"
+  >
+    <span class="close-btn" (click)="closeMenu()">&#10005;</span>
     <nav class="side-menu-links">
       <div class="cont-imag">
-        <img src="./images/icono.PNG" alt="">
+        <img src="./assets/images/icono.PNG" alt="" />
       </div>
       <a href="#">Opción 1</a>
       <a href="#">Opción 2</a>
@@ -43,50 +41,40 @@
   </div>
 </div>
 
+<app-home></app-home>
 
-  <section id="gestion-inventario">
-        <app-gestion-inventario></app-gestion-inventario>
-  </section>
+<footer>
+  <div class="logo-footer">
+    <img src="./assets/images/icono.PNG" alt="" />
+    <h3>Farmacia Caliz</h3>
 
-  <footer>
-    <div class="logo-footer">
-      <img src="./images/icono.PNG" alt="">
-      <h3>Farmacia Caliz</h3>
-
-      <div class="footer-redes-sociales">
-        <a href="" class="redes-sociales"><i class='bx bxl-facebook-circle'></i></a>
-        <a href="" class="redes-sociales"><i class='bx bxl-instagram'></i></a>
-        <a href="" class="redes-sociales"><i class='bx bxl-linkedin'></i></a>
-      </div>
-
+    <div class="footer-redes-sociales">
+      <a href="#" class="redes-sociales"
+        ><i class="bx bxl-facebook-circle"></i
+      ></a>
+      <a href="#" class="redes-sociales"
+        ><i class="bx bxl-instagram"></i
+      ></a>
+      <a href="#" class="redes-sociales"
+        ><i class="bx bxl-linkedin"></i
+      ></a>
     </div>
+  </div>
 
-    <div class="informacion">
-      <h3>Informacion para los clientes</h3>
-      <p>Numero de atencion al cliente: +56 9 xxxx xxxx</p>
-      <p>Horario de atención al cliente: xx:xx de lunes a sabado</p>
-      <p>Direccion de las sucursales: xxxxxxxxxxxxxxxxxxxxxx</p>
-    </div>
+  <div class="informacion">
+    <h3>Información para los clientes</h3>
+    <p>Número de atención al cliente: +56 9 xxxx xxxx</p>
+    <p>Horario de atención al cliente: xx:xx de lunes a sábado</p>
+    <p>Dirección de las sucursales: xxxxxxxxxxxxxxxxxxxxxx</p>
+  </div>
 
-    <div class="preguntas-frecuentes">
-      <h4>Preguntas frecuentes</h4>
-      <a href="" class="secciones-preguntas">Beneficios</a>
-      <a href="" class="secciones-preguntas">Compras</a>
-      <a href="" class="secciones-preguntas">Usuarios</a>
-    </div>
+  <div class="preguntas-frecuentes">
+    <h4>Preguntas frecuentes</h4>
+    <a href="#" class="secciones-preguntas">Beneficios</a>
+    <a href="#" class="secciones-preguntas">Compras</a>
+    <a href="#" class="secciones-preguntas">Usuarios</a>
+  </div>
+</footer>
 
-   </footer>
-  <div class="end-page">Todos los derechos reservados &#169;</div>
+<div class="end-page">Todos los derechos reservados &#169;</div>
 
-  <script>
-  function openMenu() {
-    document.getElementById('side-menu-overlay').classList.remove('hidden');
-  }
-
-  function closeMenu() {
-    document.getElementById('side-menu-overlay').classList.add('hidden');
-  }
-</script>
-
-</html> 
-<router-outlet />
