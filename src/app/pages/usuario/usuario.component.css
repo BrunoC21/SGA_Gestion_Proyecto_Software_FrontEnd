@@ -1,38 +1,80 @@
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
 }
 
-body{
+body {
     background-color: #DFDFDF;
 }
 
-.usuarios{
+.usuarios {
     display: flex;
     flex-direction: row;
     align-items: center;
     min-height: 90vh;
 }
 
-.container-foto-nombre{
+.container-foto-nombre {
     display: flex;
     flex-direction: column;
     width: 35vw;
     height: 100vh;
     align-items: center;
+    position: relative;
 }
 
-.fondo-imagen{
+.fondo-imagen {
+    width: 18vw;
+    height: 18.5vw;
+    margin-top: 25vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fondo-imagen img {
     width: 18vw;
     height: 18vw;
-    border-radius: 10em;
-    background-color: white;
-    margin-top: 25vh;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: #999999;
 }
 
-#nombre-usuario{
+/* Input file oculto */
+#fileInput {
+    display: none;
+}
+
+#btn-imagen {
+    position: absolute;
+    top: 0.8vw;
+    right: 0.8vw;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    background-color: #00AD00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+}
+
+#btn-imagen:hover {
+    background-color: #008100;
+}
+
+#btn-imagen i {
+    color: white;
+    font-size: 2.5vh;
+}
+
+#nombre-usuario {
     display: flex;
     margin-top: 3vh;
     align-items: center;
@@ -43,30 +85,7 @@ body{
     color: white;
 }
 
-#btn-imagen{
-    display: flex;
-    width: 3vw;
-    height: 3vw;
-    margin-left: 14.25vw;
-    border-radius: 3em;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background-color: #00AD00;
-    outline: none;
-    cursor: pointer;
-}
-
-#btn-imagen:hover{
-    background-color: #008100;
-}
-
-#btn-imagen i{
-    color: white;
-    font-size: 3.2vh;
-}
-
-.container-beneficios{
+.container-beneficios {
     display: flex;
     flex-direction: column;
     width: 30vw;
@@ -74,20 +93,20 @@ body{
     align-items: center;
 }
 
-.beneficios{
-   margin-top: 17vh;
-   width: 18vw;
-   height: 30vh;
+.beneficios {
+    margin-top: 17vh;
+    width: 18vw;
+    height: 30vh;
 }
 
-.compras{
+.compras {
     margin-top: 5vh;
     width: 18vw;
     height: 30vh;
 }
 
 .beneficios table,
-.compras table{
+.compras table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
@@ -95,21 +114,21 @@ body{
     color: white;
     border-radius: 10px;
     overflow: hidden;
-    background-color: white; 
+    background-color: white;
 }
 
 .beneficios th,
-.compras th{
+.compras th {
     padding: 10px 17px;
     background-color: #008100;
 }
 
 .beneficios td,
-.compras td{
+.compras td {
     padding: 10px 17px;
 }
 
-.container-datos{
+.container-datos {
     display: flex;
     flex-direction: column;
     width: 35vw;
@@ -117,25 +136,25 @@ body{
     align-items: center;
 }
 
-.datos{
+.datos {
     width: 25vw;
-    height: 65vh;   
+    height: 65vh;
     margin-top: 17vh;
     background-color: white;
     border-radius: 1em;
 }
 
-.datos h2{
+.datos h2 {
     display: flex;
     align-content: center;
     justify-content: center;
     padding: 10px 17px;
     background-color: #008F00;
     color: white;
-    border-radius: 0.5em 0.5em 0em 0em;
+    border-radius: 0.5em 0.5em 0 0;
 }
 
-.titulos-datos{
+.titulos-datos {
     color: rgb(0, 0, 0);
     margin-top: 2vh;
     margin-left: 2vw;
@@ -143,7 +162,7 @@ body{
     font-weight: 700;
 }
 
-.data-datos{
+.data-datos {
     width: 19vw;
     height: 4vh;
     margin-top: 1vh;
@@ -152,7 +171,7 @@ body{
     background-color: #DFDFDF;
 }
 
-#btn-editar{
+#btn-editar {
     width: 5vw;
     height: 4vh;
     margin-top: 3vh;
@@ -164,7 +183,7 @@ body{
     font-size: 14px;
 }
 
-#btn-editar:hover{
+#btn-editar:hover {
     background-color: #016e01;
     border: solid #004200 0.15em;
 }
