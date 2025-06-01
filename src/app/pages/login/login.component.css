@@ -20,7 +20,8 @@ body{
     align-items: center;
     width: 35vw;
     height: 60vh;
-    margin-top: 10vh;
+    margin-top: 12vh;
+    margin-bottom: 5vh;
     background-color: blue;
     border-radius: 1em;
     border: solid #00AD00 0.2em;

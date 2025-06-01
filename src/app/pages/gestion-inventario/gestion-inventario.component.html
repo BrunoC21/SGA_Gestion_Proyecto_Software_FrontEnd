@@ -100,7 +100,7 @@
                 </select>
 
                 <label>Bodega</label>
-                <select name="warehouseId" [(ngModel)]="editInventory.selectedProductId" required>
+                <select name="warehouseId" [(ngModel)]="editInventory.selectedWarehouseId" required>
                     <option *ngFor="let warehouse of warehouseList" [ngValue]="warehouse.id">{{ warehouse.warehouse_Name }}</option>
                 </select>
 

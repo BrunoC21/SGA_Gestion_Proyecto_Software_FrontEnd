@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SliceProductsPipe } from '../../pipes/slice-products.pipe';
 
 export interface Producto {
   imagen: string;
@@ -10,6 +11,7 @@ export interface Producto {
 @Component({
   selector: 'app-home',
   standalone: true,
+  imports: [SliceProductsPipe],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

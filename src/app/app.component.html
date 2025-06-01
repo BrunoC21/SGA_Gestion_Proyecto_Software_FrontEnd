@@ -1,12 +1,16 @@
 <header class="header">
   <div id="logo">
-    <img src="./assets/images/icono.PNG" alt="logo" id="logo" />
+    <a [routerLink]="'/home'">
+      <img src="./images/icono.PNG" alt="logo" id="logo-img" />
+    </a>
   </div>
 
   <nav>
     <ul class="nav-links">
-      <li><a href="#"><i class="bx bx-cart"></i></a></li>
-      <li><a href="#"><i class="bx bxs-user-circle"></i></a></li>
+      <li><a [routerLink]="'/checkout'"><i class="bx bx-cart"></i></a></li>
+      <li><a [routerLink]="'/login'"><i class="bx bxs-user-circle"></i></a></li>
+      <li><a [routerLink]="'/user'"><i class="bx bxs-user-circle"></i></a></li>
+
       <li><i class="bx bx-menu" (click)="openMenu()"></i></li>
     </ul>
   </nav>
@@ -30,10 +34,10 @@
       <div class="cont-imag">
         <img src="./assets/images/icono.PNG" alt="" />
       </div>
-      <a href="#">Opción 1</a>
-      <a href="#">Opción 2</a>
-      <a href="#">Opción 3</a>
-      <a href="#">Opción 4</a>
+      <a [routerLink]="'/productos'">Gestión Productos</a>
+      <a [routerLink]="'/bodega'">Gestión Bodega</a>
+      <a [routerLink]="'/inventario'">Gestión inventario</a>
+      <a [routerLink]="'/userlist'">Lista de Usuarios</a>
       <a href="#">Opción 5</a>
       <a href="#">Opción 6</a>
       <a href="#">Opción 7</a>
@@ -41,7 +45,11 @@
   </div>
 </div>
 
-<app-home></app-home>
+<!-- app.component.html -->
+<router-outlet></router-outlet>
+
+
+
 
 <footer>
   <div class="logo-footer">
