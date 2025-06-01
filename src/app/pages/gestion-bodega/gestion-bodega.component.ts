@@ -71,7 +71,7 @@ export class GestionBodegaComponent implements OnInit{
         };
 
         const popup = document.getElementById('popup-agregar') as HTMLElement;
-        if (popup) popup.removeAttribute('popover');
+        if (popup && popup.hidePopover) popup.hidePopover();
       });
     } else {
       alert('Todos los campos son obligatorios.');
@@ -79,7 +79,7 @@ export class GestionBodegaComponent implements OnInit{
   }
 
   openEditPopup(warehouse: Warehouse): void {
-    this.editWarehouse = { ...warehouse};
+    this.editWarehouse = { ...warehouse };
     const popup = document.getElementById('popup-modificar') as HTMLElement;
     if (popup) popup.setAttribute('popover', 'auto');
   }
@@ -93,12 +93,31 @@ export class GestionBodegaComponent implements OnInit{
       this.sucursalService.update(this.editWarehouse.id, this.editWarehouse).subscribe(() => {
         this.loadWarehouses();
         const popup = document.getElementById('popup-modificar') as HTMLElement;
-        if (popup) popup.removeAttribute('popover');
+        if (popup && popup.hidePopover) popup.hidePopover();
       });
     } else {
       alert('Todos los campos son obligatorios para modificar.');
     }
+  } 
+
+  warehouseIdToDelete: number | null = null;
+
+  openDeletePopup(warehouseId: number | undefined): void {
+    if(warehouseId != null){
+      this.warehouseIdToDelete = warehouseId;
+      const popup = document.getElementById('popup-eliminar') as HTMLElement;
+      if (popup) popup.setAttribute('popover', 'auto');
+    }
   }
-  
-  
+
+  deleteWarehouse(): void{
+    if(this.warehouseIdToDelete !== null){
+      this.sucursalService.delete(this.warehouseIdToDelete).subscribe(()=>{
+        this.loadWarehouses();
+        this.warehouseIdToDelete = null;
+        const popup = document.getElementById('popup-eliminar') as HTMLElement;
+        if (popup && popup.hidePopover) popup.hidePopover();
+      });
+    }
+  }
 }

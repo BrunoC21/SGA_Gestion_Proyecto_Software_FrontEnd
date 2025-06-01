@@ -77,7 +77,7 @@ export class GestionProductoComponent implements OnInit {
           measure_unit: ''
         };
         const popup = document.getElementById('popup-agregar') as HTMLElement;
-        if (popup) popup.removeAttribute('popover');
+        if (popup && popup.hidePopover) popup.hidePopover();
       });
     } else {
       alert('Todos los campos son obligatorios.');
@@ -101,10 +101,33 @@ export class GestionProductoComponent implements OnInit {
       this.medicamentoService.update(this.editProduct.id, this.editProduct).subscribe(() => {
         this.loadProducts();
         const popup = document.getElementById('popup-modificar') as HTMLElement;
-        if (popup) popup.removeAttribute('popover');
+        if (popup && popup.hidePopover) popup.hidePopover();
       });
     } else {
       alert('Todos los campos son obligatorios para modificar.');
     }
   }
+
+  productIdToDelete: number | null = null;
+
+  openDeletePopup(productId: number | undefined): void {
+    if (productId != null) {
+      this.productIdToDelete = productId;
+      const popup = document.getElementById('popup-eliminar') as HTMLElement;
+      if (popup) popup.setAttribute('popover', 'auto');
+    }
+  }
+
+
+  deleteProduct(): void {
+    if (this.productIdToDelete !== null) {
+      this.medicamentoService.delete(this.productIdToDelete).subscribe(() => {
+        this.loadProducts();
+        this.productIdToDelete = null;
+        const popup = document.getElementById('popup-eliminar') as HTMLElement;
+        if (popup && popup.hidePopover) popup.hidePopover();
+      });
+    }
+  }
+
 }

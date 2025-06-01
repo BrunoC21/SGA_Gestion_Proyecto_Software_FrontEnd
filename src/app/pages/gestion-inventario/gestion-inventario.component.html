@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:ng="http://angular.io">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion de inventario</title>
-    <link rel="stylesheet" href="./gestion-inventario.component.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Gestión de inventario</title>
+    <link rel="stylesheet" href="./gestion-inventario.component.css" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 <body>
-
     <section class="inventario">
         <div class="section-sup">
             <div class="number-products">
                 <label for="num">Mostrar </label>
-                <select name="" id="num" [(ngModel)]="selectedLimit">
+                <select id="num" [(ngModel)]="selectedLimit">
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="15">15</option>
@@ -33,9 +31,9 @@
                 <button id="modificar" popovertarget="popup-modificar"><i class='bx bxs-edit'></i></button>
                 <button id="agregar" popovertarget="popup-agregar"><i class='bx bx-plus'></i></button>
             </div>
-    
+
             <div class="container-search">
-                <input type="text" name="buscar" placeholder="Buscar..." [(ngModel)]="filterPost">
+                <input type="text" placeholder="Buscar..." [(ngModel)]="filterPost" />
             </div>
         </div>
 
@@ -44,30 +42,39 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th id="name">Nombre</th>
-                        <th id="description">Descripción</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
                         <th>N° Lote</th>
                         <th>Tipo de medicamento</th>
                         <th>Unidad de medida</th>
                         <th>Stock actual</th>
+                        <th>Edición</th>
                     </tr>
                 </thead>
-
                 <tbody>
-                    <tr *ngFor="let post of posts | filter:filterPost | paginate:currentPage:selectedLimit | limit:selectedLimit">
-                        <td>{{post.id}}</td>
-                        <td>{{post.name}}</td>
-                        <td>{{post.descripcion}}</td>
-                        <td>{{post.lote}}</td>
-                        <td>{{post.tipo}}</td>
-                        <td>{{post.medida}}</td>
-                        <td>{{post.stock}}</td>
+                    <tr *ngFor="let post of filteredPosts">
+                        <td>{{ post.lot.id }}</td>
+                        <td>{{ post.lot.product.product_name }}</td>
+                        <td>{{ post.lot.product.description }}</td>
+                        <td>{{ post.lot.inventory_number }}</td>
+                        <td>{{ post.lot.product.type }}</td>
+                        <td>{{ post.lot.product.measure_unit }}</td>
+                        <td>{{ post.amount }}</td>
+                        <td>
+                            <button (click)="openEditPopup(post)">
+                                <i class="bx bxs-edit"></i>
+                            </button>
+                            <button (click)="openDeletePopup(post.id, post.lot.id)">
+                                <i class="bx bx-trash"></i>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </section>
 
+  <!-- Eliminar -->
     <div class="pop-ups-fondo" popover id="popup-eliminar">
         <div class="container-pop-up" id="pop-up-eliminar">
             <div class="bar-sup">
@@ -76,89 +83,92 @@
             </div>
             <div class="form-eliminar">
                 <label for="ID-eliminar">ID del producto</label>
-                <input type="text" id="ID-eliminar">
-                <button id="btn-eliminar">Eliminar</button>
-            </div>
-        </div>
-
-    </div>
-    <div class="pop-ups-fondo"popover id="popup-modificar">
-        <div class="container-pop-up" id="pop-up-mod">
-            <div class="bar-sup">
-                <h2>Modificar un producto</h2>
-                <button popovertarget="popup-modificar" popovertargetaction="hide"><i class='bx bx-x'></i></button>
-            </div>
-            <div class="forms">
-                <form action="" id="form-mod">
-                    <label for="" id="label-id-mod">ID del producto</label>
-                    <input type="text" id="id-modificar">
-                    <label for="" class="titulos-form">Nombre del producto</label>
-                    <input type="text" id="nombre-mod">
-                    <label for="" class="titulos-form">Descripción del producto</label>
-                    <textarea name="" id="descripcion-mod"></textarea>
-                    <label for="" class="titulos-form">Lote del producto</label>
-                    <input type="text" id="lote-mod">
-                    <label for="" class="titulos-form">Tipo de producto</label>
-                    <input type="text" id="tipo-mod">
-                    <label for="" class="titulos-form">Unidad de medida</label>
-                    <select name="" id="unidad-mod">
-                        <option value="mg">mg (miligramos)</option>
-                        <option value="g">g (gramos)</option>
-                        <option value="mL">mL (mililitros)</option>
-                        <option value="UI">UI (Unid. intern.)</option>
-                        <option value="mcg">mcg (microgramos)</option>
-                    </select>
-                    <label for="" class="titulos-form">Stock del producto</label>
-                    <input type="text" id="stock-mod">
-                    <button id="btn-mod">Modificar</button>
-                </form>
-                <div class="imagen-producto-mod">
-                    <div class="fondo-imagen">
-                        <img src="/src/app/images/imagen_defecto.png" alt="">
-                    </div>         
-                    <input type="file">
-                </div>
+                <input type="text" id="ID-eliminar" [(ngModel)]="inventoryIdToDelete" readonly>
+                <button popovertarget="popup-eliminar" (click)="deleteInventory()" popovertargetaction="hide" type="submit" id="btn-eliminar">Eliminar</button>
             </div>
         </div>
     </div>
 
-    <div class="pop-ups-fondo"popover id="popup-agregar">
+  
+    <div class="pop-ups-fondo" popover id="popup-modificar">
         <div class="container-pop-up">
             <div class="bar-sup">
-                <h2>Agregar un producto</h2>
-                <button popovertarget="popup-agregar" popovertargetaction="hide"><i class='bx bx-x'></i></button>
+                <h2>Modificar inventario</h2>
+            <button popovertarget="popup-modificar" popovertargetaction="hide">
+                <i class='bx bx-x'></i>
+            </button>
+        </div>
+        <div class="forms">
+            <form id="form-mod" (ngSubmit)="updateInventory()" #formMod="ngForm">
+                <label>ID del inventario</label>
+                <input type="text" name="id" [(ngModel)]="editInventory.id" readonly />
+
+                <label>Producto</label>
+                <select name="productId" [(ngModel)]="editInventory.selectedProductId" required>
+                    <option *ngFor="let product of productsList" [ngValue]="product.id">{{ product.product_name }}</option>
+                </select>
+
+                <label>Bodega</label>
+                <select name="warehouseId" [(ngModel)]="editInventory.selectedProductId" required>
+                    <option *ngFor="let warehouse of warehouseList" [ngValue]="warehouse.id">{{ warehouse.warehouse_Name }}</option>
+                </select>
+
+                <label>Lote</label>
+                <input type="text" name="lote" [(ngModel)]="editInventory.inventory_number" required />
+
+                <label>Fecha de expiración</label>
+                <input type="date" name="fechaExpiracion" [(ngModel)]="editInventory.exp_date" required />
+
+                <label>Precio unitario</label>
+                <input type="number" name="precio" step="0.01" [(ngModel)]="editInventory.unit_price" required />
+
+                <label>Stock</label>
+                <input type="number" name="stock" [(ngModel)]="editInventory.stockAmount" required />
+
+                <button popovertarget="popup-modificar" popovertargetaction="hide" type="submit" id="btn-mod">Modificar</button>
+            </form>
+        </div>
+    </div>
+  </div>
+
+
+  <!-- Agregar -->
+    <div class="pop-ups-fondo" popover id="popup-agregar">
+        <div class="container-pop-up">
+            <div class="bar-sup">
+                <h2>Agregar inventario</h2>
+                <button popovertarget="popup-agregar" popovertargetaction="hide">
+                    <i class='bx bx-x'></i>
+                </button>
             </div>
             <div class="forms">
-                <form action="" id="form-agregar">
-                    <label for="" class="titulos-form" id="label-nombre-agregar">Nombre del producto</label>
-                    <input type="text" id="nombre-agregar">
-                    <label for="" class="titulos-form">Descripción del producto</label>
-                    <textarea name="" id="descripcion-agregar"></textarea>
-                    <label for="" class="titulos-form">Lote del producto</label>
-                    <input type="text" id="lote-agregar">
-                    <label for="" class="titulos-form">Tipo de producto</label>
-                    <input type="text" id="tipo-agregar">
-                    <label for="" class="titulos-form">Unidad de medida</label>
-                    <select name="" id="unidad-agregar">
-                        <option value="mg">mg (miligramos)</option>
-                        <option value="g">g (gramos)</option>
-                        <option value="mL">mL (mililitros)</option>
-                        <option value="UI">UI (Unid. intern.)</option>
-                        <option value="mcg">mcg (microgramos)</option>
+                <form id="form-agregar" (ngSubmit)="addInventory()" #formAgregar="ngForm">
+                    <label>Producto</label>
+                    <select name="productId" [(ngModel)]="newInventory.selectedProductId" required>
+                        <option *ngFor="let product of productsList" [ngValue]="product.id">{{ product.product_name }}</option>
                     </select>
-                    <label for="" class="titulos-form">Stock del producto</label>
-                    <input type="text" id="stock-agregar">
-                    <button id="btn-agregar">Agregar</button>
+
+                    <label>Bodega</label>
+                    <select name="warehouseId" [(ngModel)]="newInventory.selectedWarehouseId" required>
+                        <option *ngFor="let warehouse of warehouseList" [ngValue]="warehouse.id">{{ warehouse.warehouse_Name }}</option>
+                    </select>
+
+                    <label>Lote</label>
+                    <input type="text" name="lote" [(ngModel)]="newInventory.inventory_number" required />
+
+                    <label>Fecha de expiración</label>
+                    <input type="date" name="fechaExpiracion" [(ngModel)]="newInventory.exp_date" required />
+
+                    <label>Precio unitario</label>
+                    <input type="number" name="precio" step="0.01" [(ngModel)]="newInventory.unit_price" required />
+
+                    <label>Stock</label>
+                    <input type="number" name="stock" [(ngModel)]="newInventory.stockAmount" required />
+
+                    <button popovertarget="popup-agregar" popovertargetaction="hide" type="submit" id="btn-agregar">Agregar</button>
                 </form>
-                <div class="imagen-producto-agregar">
-                    <div class="fondo-imagen">
-                        <img src="/src/app/images/imagen_defecto.png" alt="">
-                    </div>         
-                    <input type="file">
-                </div>
             </div>
         </div>
-        
     </div>
 </body>
 </html>

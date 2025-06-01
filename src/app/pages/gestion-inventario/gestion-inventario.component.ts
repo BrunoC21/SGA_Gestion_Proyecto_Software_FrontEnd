@@ -43,6 +43,24 @@ export class GestionInventarioComponent implements OnInit {
     stockAmount: 0
   };
 
+  editInventory: {
+    selectedProductId: number | null;
+    selectedWarehouseId: number | null;
+    id: number | undefined,
+    inventory_number: number;
+    exp_date: string;
+    unit_price: number;
+    stockAmount: number;
+  } = {
+    selectedProductId: null,
+    selectedWarehouseId: null,
+    id: 0,
+    inventory_number: 0,
+    exp_date: '',
+    unit_price: 0,
+    stockAmount: 0
+  };
+
   constructor(
     private inventarioService: InventarioService,
     private medicamentoService: MedicamentoService,
@@ -138,10 +156,115 @@ export class GestionInventarioComponent implements OnInit {
           this.resetForm();
 
           const popup = document.getElementById('popup-agregar') as HTMLElement;
-          if (popup) popup.removeAttribute('popover');
+          if (popup && popup.hidePopover) popup.hidePopover();
         });
       });
     });
+  }
+
+  openEditPopup(stockware: StockWare): void {
+    this.editInventory = {
+      selectedProductId: stockware.lot.product?.id ?? null,
+      selectedWarehouseId: stockware.warehouse?.id ?? null,
+      inventory_number: stockware.lot.inventory_number,
+      id: stockware.lot.id,
+      exp_date: stockware.lot.exp_date,
+      unit_price: stockware.lot.unit_price,
+      stockAmount: stockware.amount ?? 0
+    };
+
+    const popup = document.getElementById('popup-modificar') as HTMLElement;
+    if (popup) popup.setAttribute('popover', 'auto');
+  }
+
+  updateInventory(): void {
+    const {
+      selectedProductId,
+      selectedWarehouseId,
+      inventory_number,
+      exp_date,
+      unit_price,
+      stockAmount
+    } = this.editInventory;
+
+    if (!selectedProductId || !selectedWarehouseId) {
+      alert('Todos los campos son obligatorios para modificar.');
+      return;
+    }
+
+    const selectedProduct = this.productsList.find(p => p.id === selectedProductId);
+    const selectedWarehouse = this.warehouseList.find(w => w.id === selectedWarehouseId);
+
+    if (!selectedProduct || !selectedWarehouse) {
+      alert('Producto o bodega no válidos.');
+      return;
+    }
+
+    const updatedInventory: Inventory = {
+      product: selectedProduct,
+      inventory_number,
+      exp_date,
+      unit_price
+    };
+
+    this.inventarioService.update(updatedInventory.inventory_number, updatedInventory).subscribe(() => {
+      this.inventarioService.getAll().subscribe((inventories: Inventory[]) => {
+        const matched = inventories.find(i =>
+          i.product.id === selectedProductId &&
+          i.inventory_number === inventory_number &&
+          i.exp_date === exp_date &&
+          i.unit_price === unit_price
+        );
+
+        if (!matched) {
+          alert('No se encontró el inventario actualizado.');
+          return;
+        }
+
+        const updatedStock: StockWare = {
+          lot: matched,
+          warehouse: selectedWarehouse,
+          amount: stockAmount
+        };
+
+        this.sucursalInventarioService.update(matched.id!, updatedStock).subscribe(() => {
+          this.loadStock();
+          const popup = document.getElementById('popup-modificar') as HTMLElement;
+          if (popup && popup.hidePopover) popup.hidePopover();
+        });
+      });
+    });
+  }
+
+  stockwareIdToDelete: number | null = null;
+  inventoryIdToDelete: number | null = null;
+
+  openDeletePopup(stockwareId: number|undefined, inventoryId: number|undefined): void{
+    if(stockwareId!=null && inventoryId!=null){
+      this.stockwareIdToDelete = stockwareId;
+      this.inventoryIdToDelete = inventoryId;
+      const popup = document.getElementById('popup-eliminar') as HTMLElement;
+      if (popup) popup.setAttribute('popover', 'auto');
+    }
+  }
+
+  deleteInventory(): void {
+    if (this.stockwareIdToDelete !== null && this.inventoryIdToDelete !== null) {
+      this.sucursalInventarioService.delete(this.stockwareIdToDelete).subscribe(() => {
+        this.inventarioService.delete(this.inventoryIdToDelete!).subscribe(() => {
+          this.loadStock();
+          this.stockwareIdToDelete = null;
+          this.inventoryIdToDelete = null;
+
+          const popup = document.getElementById('popup-eliminar') as HTMLElement;
+          if (popup && popup.hidePopover) popup.hidePopover();
+        }, error => {
+          alert('Error al eliminar el inventario.');
+        });
+      }, error => {
+        alert('Error al eliminar el stockware.');
+      });
+    }
   }
 
 

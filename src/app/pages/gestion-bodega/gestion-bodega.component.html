@@ -46,17 +46,21 @@
                         <th>Id</th>
                         <th id="warehouse_Name">Nombre</th>
                         <th id="direccion">Dirección</th>
+                        <th>Edición/Borrado</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr *ngFor="let post of posts | filter:filterPost | paginate:currentPage:selectedLimit | limit:selectedLimit">
+                    <tr *ngFor="let post of filteredPosts">
                         <td>{{post.id}}</td>
                         <td>{{post.warehouse_Name}}</td>
-                        <td>{{post.direccion}}</td>
+                        <td>{{post.direction}}</td>
                         <td>
                             <button (click)="openEditPopup(post)">
                                 <i class="bx bxs-edit"></i>
+                            </button>
+                            <button (click)="openDeletePopup(post.id)">
+                                <i class="bx bx-trash"></i>
                             </button>
                         </td>
                     </tr>
@@ -68,21 +72,21 @@
     <div class="pop-ups-fondo" popover id="popup-eliminar">
         <div class="container-pop-up" id="pop-up-eliminar">
             <div class="bar-sup">
-                <h2>Eliminar un producto</h2>
+                <h2>Eliminar una Sucursal</h2>
                 <button popovertarget="popup-eliminar" popovertargetaction="hide"><i class='bx bx-x'></i></button>
             </div>
             <div class="form-eliminar">
-                <label for="ID-eliminar">ID del producto</label>
-                <input type="text" id="ID-eliminar">
-                <button id="btn-eliminar">Eliminar</button>
+                <label for="ID-eliminar">ID de Sucursal</label>
+                <input type="text" id="ID-eliminar" [(ngModel)]="warehouseIdToDelete" readonly>
+                <button popovertarget="popup-eliminar" (click)="deleteWarehouse()" popovertargetaction="hide" type="submit" id="btn-eliminar">Eliminar</button>
             </div>
         </div>
-
     </div>
+    
     <div class="pop-ups-fondo"popover id="popup-modificar">
         <div class="container-pop-up" id="pop-up-mod">
             <div class="bar-sup">
-                <h2>Modificar una sucursal</h2>
+                <h2>Modificar una Sucursal</h2>
                 <button popovertarget="popup-modificar" popovertargetaction="hide">
                     <i class='bx bx-x'></i>
                 </button>
@@ -96,7 +100,7 @@
 
                     <label class="titulos-form">Descripción de la Sucursal</label>
                     <textarea name="description" [(ngModel)]="newWarehouse.direction" required></textarea>
-                    <button type="submit" id="btn-mod">Modificar</button>
+                    <button popovertarget="popup-modificar" popovertargetaction="hide" type="submit" id="btn-mod">Modificar</button>
                 </form>
                 
                 <div class="imagen-producto-mod">
@@ -125,7 +129,7 @@
                     <label class="titulos-form">Descripción de la Sucursal</label>
                     <textarea name="description" [(ngModel)]="newWarehouse.direction" required></textarea>
 
-                    <button type="submit" id="btn-agregar">Agregar</button>
+                    <button popovertarget="popup-agregar" popovertargetaction="hide" type="submit" id="btn-agregar">Agregar</button>
                 </form>
 
                 <div class="imagen-producto-agregar">

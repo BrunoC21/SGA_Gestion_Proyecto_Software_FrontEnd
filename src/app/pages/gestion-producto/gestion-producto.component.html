@@ -48,11 +48,12 @@
                         <th id="description">Descripción</th>
                         <th>Tipo de medicamento</th>
                         <th>Unidad de medida</th>
+                        <th>Edición/Borrado</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr *ngFor="let post of posts | filter:filterPost | paginate:currentPage:selectedLimit | limit:selectedLimit">
+                    <tr *ngFor="let post of filteredPosts">
                         <td>{{ post.id }}</td>
                         <td>{{ post.product_name }}</td>
                         <td>{{ post.description }}</td>
@@ -62,7 +63,11 @@
                             <button (click)="openEditPopup(post)">
                                 <i class="bx bxs-edit"></i>
                             </button>
+                            <button (click)="openDeletePopup(post.id)">
+                                <i class="bx bx-trash"></i>
+                            </button>
                         </td>
+                        
                     </tr>
                 </tbody>
             </table>
@@ -77,8 +82,8 @@
             </div>
             <div class="form-eliminar">
                 <label for="ID-eliminar">ID del producto</label>
-                <input type="text" id="ID-eliminar">
-                <button id="btn-eliminar">Eliminar</button>
+                <input type="text" id="ID-eliminar" [(ngModel)]="productIdToDelete" readonly />
+                <button popovertarget="popup-eliminar" (click)="deleteProduct()" popovertargetaction="hide" type="submit" id="btn-eliminar">Eliminar</button>
             </div>
         </div>
 
@@ -108,13 +113,13 @@
                     <label class="titulos-form">Unidad de medida</label>
                     <select id="unidad-mod" name="measure_unit" [(ngModel)]="editProduct.measure_unit" required>
                         <option value="mg">mg (miligramos)</option>
-                        <option value="g">g (gramos)</option>
+                        <option value="g">gr (gramos)</option>
                         <option value="mL">mL (mililitros)</option>
                         <option value="UI">UI (Unid. intern.)</option>
                         <option value="mcg">mcg (microgramos)</option>
                     </select>
 
-                    <button type="submit" id="btn-mod">Modificar</button>
+                    <button popovertarget="popup-modificar" popovertargetaction="hide" type="submit" id="btn-mod">Modificar</button>
                 </form>
 
                 <div class="imagen-producto-mod">
@@ -156,7 +161,7 @@
                         <option value="mcg">mcg (microgramos)</option>
                     </select>
 
-                    <button type="submit" id="btn-agregar">Agregar</button>
+                    <button popovertarget="popup-agregar" popovertargetaction="hide" type="submit" id="btn-agregar">Agregar</button>
                 </form>
 
                 <div class="imagen-producto-agregar">
