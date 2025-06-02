@@ -1,11 +1,37 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Router } from '@angular/router';
+import { UsuarioService, LoginRequest, LoginResponse } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  username = '';
+  password = '';
+  errorMessage = '';
 
+  constructor(private usuarioService: UsuarioService, private router: Router) {}
+
+  onLogin(): void {
+    const request: LoginRequest = {
+      username: this.username,
+      password: this.password
+    };
+
+    this.usuarioService.login(request).subscribe({
+      next: (response: LoginResponse) => {
+        localStorage.setItem('authToken', response.token);
+        this.router.navigate(['/dashboard']); // cambia la ruta si es necesario
+      },
+      error: () => {
+        this.errorMessage = 'Credenciales inválidas';
+      }
+    });
+  }
 }

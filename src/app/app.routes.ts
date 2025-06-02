@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ComprasComponent } from './pages/compras/compras.component';
 import { LoginComponent } from './pages/login/login.component';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
+import { RegisterComponent } from './pages/register/register.component';
 import { Component } from '@angular/core';
 
 export const routes: Routes = [
@@ -18,5 +19,6 @@ export const routes: Routes = [
     { path: 'userlist', component: ListaUsuariosComponent},
     { path: 'checkout', component: ComprasComponent},
     { path: 'user', component: UsuarioComponent},
-    { path: 'login', component: LoginComponent}
+    { path: 'login', component: LoginComponent},
+    { path: 'register', component: RegisterComponent}
 ];

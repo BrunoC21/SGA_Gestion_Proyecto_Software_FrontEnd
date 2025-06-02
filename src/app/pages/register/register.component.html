@@ -1,38 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link rel="stylesheet" href="./register.component.css">
-</head>
-<body>
-    <div class="cont-form">
-        <div class="cont-titulo">
-            <h2>Crea tu propia cuenta</h2>
-        </div>
-        <form action="">
-            <label for="" id="primer-label">Nombre completo</label>
-            <input type="text" id="" required>
-            <label for="">Correo electronico</label>
-            <input type="email" id="" required>
-            <label for="">Fecha de nacimiento</label>
-            <input type="date" id="">
-            <label for="">Region</label>
-            <input type="text" id="">
-            <label for="">Comuna</label>
-            <input type="text" id="">
-            <label for="">Dirección</label>
-            <input type="text" id="">
-            <label for="">Contraseña</label>
-            <input type="password" id="" required>
-        </form>
-        <div class="cont-btn">
-            <button>Registrarse</button>
-        </div>
-        <div class="acceder">
-            ¿Ya tienes una cuenta? &nbsp; <a href="">Acceder</a>
-        </div>
+<div class="cont-form">
+  <div class="cont-titulo">
+    <h2>Crea tu propia cuenta</h2>
+  </div>
+
+  <form (ngSubmit)="onRegister()">
+    <label for="fullName" id="primer-label">Nombre completo</label>
+    <input type="text" id="fullName" [(ngModel)]="fullName" name="fullName" required>
+
+    <label for="email">Correo electrónico</label>
+    <input type="email" id="email" [(ngModel)]="email" name="email" required>
+
+    <label for="birthDate">Fecha de nacimiento</label>
+    <input type="date" id="birthDate" [(ngModel)]="birthDate" name="birthDate">
+
+    <label for="region">Región</label>
+    <input type="text" id="region" [(ngModel)]="region" name="region">
+
+    <label for="commune">Comuna</label>
+    <input type="text" id="commune" [(ngModel)]="commune" name="commune">
+
+    <label for="address">Dirección</label>
+    <input type="text" id="address" [(ngModel)]="address" name="address">
+
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" [(ngModel)]="password" name="password" required>
+
+    <div class="cont-btn">
+      <button type="submit">Registrarse</button>
     </div>
-</body>
-</html>
+
+    <div class="acceder">
+      ¿Ya tienes una cuenta? &nbsp;
+      <a routerLink="/login">Acceder</a>
+    </div>
+
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  </form>
+</div>

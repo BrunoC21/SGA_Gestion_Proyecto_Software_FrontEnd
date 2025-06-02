@@ -74,4 +74,8 @@ export class UsuarioService {
     return this.http.put<string>(`${this.baseUrl}/admin/update-user/${userId}`, updatedData);
   }
 
+  whoami(): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/auth/whoami`);
+  }
+
 }
