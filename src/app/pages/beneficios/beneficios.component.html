@@ -1,95 +1,98 @@
-
+<!-- beneficios.component.html -->
 <section class="fondo-seccion">
-    <div class="section-sup">
-        <div class="number-products">
-            <label for="num">Mostrar </label>
-            <select name="" id="num" [(ngModel)]="selectedLimit">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-            </select>
-            <p> beneficios</p>
-        </div>
-
-        <div class="paginacion">
-            <button (click)="currentPage = currentPage - 1" [disabled]="currentPage === 1"><i class='bx bx-chevron-left'></i></button>
-                <span>Página {{ currentPage }} de {{ totalPages }}</span>
-            <button (click)="currentPage = currentPage + 1" [disabled]="currentPage === totalPages"><i class='bx bx-chevron-right'></i></button>
-        </div>
-
-        <div class="container-buttons">
-            <button id="agregar" popovertarget="popup-agregar"><i class='bx bx-plus'></i></button>
-        </div>
-    
-        <div class="container-search">
-            <input type="text" name="buscar" placeholder="Buscar..." [(ngModel)]="filterPost">
-        </div>
+  <div class="section-sup">
+    <div class="number-products">
+      <label for="num">Mostrar </label>
+      <select id="num" [(ngModel)]="selectedLimit">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+      </select>
+      <p> beneficios</p>
     </div>
 
-    <div class="container-tabla">
-            <table>
-                <thead>
-                    <tr>
-                        <th id="id-benef">Id</th>
-                        <th id="beneficio_name">Nombre</th>
-                        <th id="descripcion_benef">Descripción</th>
-                        <th id="requisitos_benef">Requisitos</th>
-                        <th id="borrado_benef">Borrado</th>
-                    </tr>
-                </thead>
+    <div class="paginacion">
+      <button (click)="currentPage = currentPage - 1" [disabled]="currentPage === 1">
+        <i class='bx bx-chevron-left'></i>
+      </button>
+      <span>Página {{ currentPage }} de {{ totalPages }}</span>
+      <button (click)="currentPage = currentPage + 1" [disabled]="currentPage === totalPages">
+        <i class='bx bx-chevron-right'></i>
+      </button>
+    </div>
 
-                <tbody>
-                    <tr *ngFor="let post of filteredPosts">
-                        <td>{{post.id}}</td>
-                        <td>{{post.beneficio_name}}</td>
-                        <td>{{post.descripcion_benef}}</td>
-                        <td>{{post.requisitos_benef}}</td>
-                        <td>
-                            <button id="btn-eliminar-benef" popovertarget="popup-eliminar">
-                                <i class="bx bx-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="container-buttons">
+      <button id="agregar" popovertarget="popup-agregar"><i class='bx bx-plus'></i></button>
+    </div>
 
-        <div class="pop-ups-fondo" popover id="popup-eliminar">
-            <div class="container-pop-up" id="pop-up-eliminar">
-                <div class="bar-sup">
-                    <h2>Eliminar un beneficio</h2>
-                    <button popovertarget="popup-eliminar" popovertargetaction="hide"><i class='bx bx-x'></i></button>
-                </div>
-                <div class="form-eliminar">
-                    <label for="ID-eliminar">ID del beneficio</label>
-                    <input type="text" id="ID-eliminar" [(ngModel)]="" readonly>
-                    <button popovertarget="popup-eliminar" (click)="" popovertargetaction="hide" type="submit" id="btn-eliminar">Eliminar</button>
-                </div>
-            </div>
-        </div>
+    <div class="container-search">
+      <input type="text" placeholder="Buscar..." [(ngModel)]="filterPost">
+    </div>
+  </div>
 
-        <div class="pop-ups-fondo" popover id="popup-agregar">
-            <div class="container-pop-up" id="pop-up-agregar">
-                <div class="bar-sup">
-                    <h2>Agregar Sucursal</h2>
-                    <button popovertarget="popup-agregar" popovertargetaction="hide">
-                        <i class='bx bx-x'></i>
-                    </button>
-                </div>
-                <div class="forms">
-                    <form id="form-agregar" #formAgregar="ngForm" (ngSubmit)="">
-                        <label class="titulos-form" id="primero-label-add">Nombre del beneficio</label>
-                        <input type="text" name="beneficio_name" [(ngModel)]="" required />
+  <div class="container-tabla">
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Requisitos</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of filteredPosts">
+          <td>{{ post.id }}</td>
+          <td>{{ post.nombre }}</td>
+          <td>{{ post.descripcion }}</td>
+          <td>{{ post.requisitos || 'N/A' }}</td>
+          <td>
+            <button id="btn-eliminar-benef" popovertarget="popup-eliminar" (click)="seleccionarBeneficioEliminar(post.id)">
+              <i class="bx bx-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-                        <label class="titulos-form">Descripción del beneficio</label>
-                        <textarea name="description" [(ngModel)]="" required></textarea>
+  <!-- Popup Eliminar -->
+  <div class="pop-ups-fondo" popover id="popup-eliminar">
+    <div class="container-pop-up">
+      <div class="bar-sup">
+        <h2>Eliminar un beneficio</h2>
+        <button popovertarget="popup-eliminar" popovertargetaction="hide"><i class='bx bx-x'></i></button>
+      </div>
+      <div class="form-eliminar">
+        <label for="ID-eliminar">ID del beneficio</label>
+        <input type="text" id="ID-eliminar" [value]="beneficioEliminarId" readonly>
+        <button popovertarget="popup-eliminar" popovertargetaction="hide" (click)="eliminarBeneficio()" id="btn-eliminar">Eliminar</button>
+      </div>
+    </div>
+  </div>
 
-                        <label class="titulos-form">Requisitos del beneficio</label>
-                        <textarea name="Requisitos" [(ngModel)]="" required></textarea>
+  <!-- Popup Agregar -->
+  <div class="pop-ups-fondo" popover id="popup-agregar">
+    <div class="container-pop-up">
+      <div class="bar-sup">
+        <h2>Agregar Beneficio</h2>
+        <button popovertarget="popup-agregar" popovertargetaction="hide"><i class='bx bx-x'></i></button>
+      </div>
+      <div class="forms">
+        <form #formAgregar="ngForm" (ngSubmit)="agregarBeneficio()">
+          <label class="titulos-form">Nombre del beneficio</label>
+          <input type="text" name="beneficio_name" [(ngModel)]="beneficio_name" required>
 
-                        <button popovertarget="popup-agregar" popovertargetaction="hide" type="submit" id="btn-agregar">Agregar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+          <label class="titulos-form">Descripción del beneficio</label>
+          <textarea name="descripcion_benef" [(ngModel)]="descripcion_benef" required></textarea>
+
+          <label class="titulos-form">Requisitos del beneficio</label>
+          <textarea name="requisitos_benef" [(ngModel)]="requisitos_benef" required></textarea>
+
+          <button type="submit" id="btn-agregar" popovertarget="popup-agregar" popovertargetaction="hide">Agregar</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </section>

@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { Component } from '@angular/core';
+import { BeneficiosComponent } from './pages/beneficios/beneficios.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -20,5 +21,6 @@ export const routes: Routes = [
     { path: 'checkout', component: ComprasComponent},
     { path: 'user', component: UsuarioComponent},
     { path: 'login', component: LoginComponent},
-    { path: 'register', component: RegisterComponent}
+    { path: 'register', component: RegisterComponent},
+    { path: 'beneficios', component: BeneficiosComponent}
 ];

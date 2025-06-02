@@ -6,7 +6,7 @@
 }
 
 .fondo-seccion{
-    background-color: #DFDFDF;
+    background-color: #fffefe;
 }
 
 .section-sup{
@@ -16,6 +16,7 @@
     align-items: center;
     height: 60px;
     padding: 5px 160px;
+    margin-top: 10vh;
 }
 
 .number-products{
@@ -183,6 +184,7 @@
 .container-tabla {
     margin-top: 4vh;
     padding: 0 10px;
+    margin-bottom: 10vh;
 }
 
 /* Estilos generales de la tabla */
