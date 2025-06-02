@@ -17,7 +17,9 @@
           <tr><th>Mis beneficios</th></tr>
         </thead>
         <tbody>
-          <tr><td><!-- Aquí tus datos de beneficios --></td></tr>
+          <tr>
+            <td>Aquí tus datos de beneficios (pendiente implementación)</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -25,9 +27,11 @@
     <div class="ultimas-compras">
       <div class="compras">
         <table>
-          <thead><tr><th>Mis ultimas compras</th></tr></thead>
+          <thead><tr><th>Mis últimas compras</th></tr></thead>
           <tbody>
-            <tr><td><!-- Aquí tus datos de compras --></td></tr>
+            <tr>
+              <td>Aquí tus datos de compras (pendiente implementación)</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -37,16 +41,24 @@
   <div class="container-datos">
     <div class="datos">
       <h2>Mis datos</h2>
-      <h4 class="titulos-datos">Beneficiario</h4>
+      <h4 class="titulos-datos">Nombre completo</h4>
       <p class="data-datos">{{ user.fullName }}</p>
+
       <h4 class="titulos-datos">Fecha de nacimiento</h4>
       <p class="data-datos">{{ user.birthDate | date:'longDate' }}</p>
+
       <h4 class="titulos-datos">Región</h4>
       <p class="data-datos">{{ user.region }}</p>
+
       <h4 class="titulos-datos">Comuna</h4>
       <p class="data-datos">{{ user.commune }}</p>
+
       <h4 class="titulos-datos">Dirección</h4>
       <p class="data-datos">{{ user.address }}</p>
+
+      <h4 class="titulos-datos">Rol</h4>
+      <p class="data-datos">{{ user.role }}</p>
+
       <button id="btn-editar">Editar</button>
     </div>
   </div>

@@ -47,7 +47,7 @@ export class UsuarioService {
     @Inject('API_URL') private apiUrl: string
   ) {
     this.baseUrl = `${this.apiUrl}/auth`;
-    }
+  }
 
   register(request: RegisterRequest): Observable<string> {
     return this.http.post<string>(`${this.baseUrl}/register`, request);
@@ -59,6 +59,10 @@ export class UsuarioService {
 
   editProfile(request: RegisterRequest): Observable<string> {
     return this.http.put<string>(`${this.baseUrl}/edit-profile`, request);
+  }
+
+  whoami(): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/whoami`);
   }
 
   updateUserRole(userId: number, role: string): Observable<string> {
@@ -74,8 +78,9 @@ export class UsuarioService {
     return this.http.put<string>(`${this.baseUrl}/admin/update-user/${userId}`, updatedData);
   }
 
-  whoami(): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}/auth/whoami`);
+  // 📄 Obtener todos los usuarios (admin)
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseUrl}/admin/users`);
   }
 
 }

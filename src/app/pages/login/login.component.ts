@@ -27,7 +27,7 @@ export class LoginComponent {
     this.usuarioService.login(request).subscribe({
       next: (response: LoginResponse) => {
         localStorage.setItem('authToken', response.token);
-        this.router.navigate(['/dashboard']); // cambia la ruta si es necesario
+        this.router.navigate(['/user']); // cambia la ruta si es necesario
       },
       error: () => {
         this.errorMessage = 'Credenciales inválidas';
