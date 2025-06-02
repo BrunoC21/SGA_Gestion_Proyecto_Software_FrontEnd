@@ -33,10 +33,10 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th id="id_bodega">Id</th>
                         <th id="warehouse_Name">Nombre</th>
                         <th id="direccion">Dirección</th>
-                        <th>Edición/Borrado</th>
+                        <th id="opciones">Edición/Borrado</th>
                     </tr>
                 </thead>
 
@@ -46,10 +46,10 @@
                         <td>{{post.warehouse_Name}}</td>
                         <td>{{post.direction}}</td>
                         <td>
-                            <button (click)="openEditPopup(post)" popovertarget="popup-modificar">
+                            <button id="mod-bodega" (click)="openEditPopup(post)" popovertarget="popup-modificar">
                                 <i class="bx bxs-edit"></i>
                             </button>
-                            <button (click)="openDeletePopup(post.id)" popovertarget="popup-eliminar">
+                            <button id="eliminar-bodega" (click)="openDeletePopup(post.id)" popovertarget="popup-eliminar">
                                 <i class="bx bx-trash"></i>
                             </button>
                         </td>
@@ -88,7 +88,7 @@
                     <label class="titulos-form">Nombre de la Sucursal</label>
                     <input type="text" name="product_name" [(ngModel)]="newWarehouse.warehouse_Name" required />
 
-                    <label class="titulos-form">Descripción de la Sucursal</label>
+                    <label class="titulos-form">Dirección de la Sucursal</label>
                     <textarea name="description" [(ngModel)]="newWarehouse.direction" required></textarea>
                     <button popovertarget="popup-modificar" popovertargetaction="hide" type="submit" id="btn-mod">Modificar</button>
                 </form>
@@ -104,7 +104,7 @@
     </div>
 
     <div class="pop-ups-fondo" popover id="popup-agregar">
-        <div class="container-pop-up">
+        <div class="container-pop-up" id="pop-up-agregar">
             <div class="bar-sup">
                 <h2>Agregar Sucursal</h2>
                 <button popovertarget="popup-agregar" popovertargetaction="hide">
@@ -116,7 +116,7 @@
                     <label class="titulos-form">Nombre de la Sucursal</label>
                     <input type="text" name="product_name" [(ngModel)]="newWarehouse.warehouse_Name" required />
 
-                    <label class="titulos-form">Descripción de la Sucursal</label>
+                    <label class="titulos-form">Dirección de la Sucursal</label>
                     <textarea name="description" [(ngModel)]="newWarehouse.direction" required></textarea>
 
                     <button popovertarget="popup-agregar" popovertargetaction="hide" type="submit" id="btn-agregar">Agregar</button>
