@@ -46,10 +46,10 @@
                         <td>{{post.warehouse_Name}}</td>
                         <td>{{post.direction}}</td>
                         <td>
-                            <button (click)="openEditPopup(post)">
+                            <button (click)="openEditPopup(post)" popovertarget="popup-modificar">
                                 <i class="bx bxs-edit"></i>
                             </button>
-                            <button (click)="openDeletePopup(post.id)">
+                            <button (click)="openDeletePopup(post.id)" popovertarget="popup-eliminar">
                                 <i class="bx bx-trash"></i>
                             </button>
                         </td>
