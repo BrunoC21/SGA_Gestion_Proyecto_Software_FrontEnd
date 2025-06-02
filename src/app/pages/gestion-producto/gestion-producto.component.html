@@ -50,14 +50,13 @@
                         <td>{{ post.type }}</td>
                         <td>{{ post.measure_unit }}</td>
                         <td>
-                            <button (click)="openEditPopup(post)">
+                            <button (click)="openEditPopup(post)" popovertarget="popup-modificar">
                                 <i class="bx bxs-edit"></i>
                             </button>
-                            <button (click)="openDeletePopup(post.id)">
+                            <button (click)="openDeletePopup(post.id)" popovertarget="popup-eliminar">
                                 <i class="bx bx-trash"></i>
                             </button>
-                        </td>
-                        
+                        </td> 
                     </tr>
                 </tbody>
             </table>
@@ -133,7 +132,7 @@
             </div>
             <div class="forms">
                 <form id="form-agregar" #formAgregar="ngForm" (ngSubmit)="addProduct()">
-                    <label class="titulos-form">Nombre del producto</label>
+                    <label class="titulos-form" id="label-nombre-agregar">Nombre del producto</label>
                     <input type="text" name="product_name" [(ngModel)]="newProduct.product_name" required />
 
                     <label class="titulos-form">Descripción del producto</label>
@@ -143,7 +142,7 @@
                     <input type="text" name="type" [(ngModel)]="newProduct.type" required />
 
                     <label class="titulos-form">Unidad de medida</label>
-                    <select name="measure_unit" [(ngModel)]="newProduct.measure_unit" required>
+                    <select id="unidad-add" name="measure_unit" [(ngModel)]="newProduct.measure_unit" required>
                         <option value="mg">mg (miligramos)</option>
                         <option value="g">g (gramos)</option>
                         <option value="mL">mL (mililitros)</option>

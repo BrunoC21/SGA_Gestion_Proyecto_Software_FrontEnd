@@ -51,7 +51,8 @@ body {
   color: #00AD00;                   /* color de la flecha */
   font-size: 3rem;
   cursor: pointer;
-  z-index: 2;
+  position: relative;
+  z-index: -100;
   padding: 0;                    /* sin relleno */
   margin: 0 2vw;                 /* separación lateral desde el carrusel */
   user-select: none;

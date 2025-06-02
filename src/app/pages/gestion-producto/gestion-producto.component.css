@@ -343,7 +343,7 @@ thead th:last-child {
 #form-mod label{
     width: 40vw;
     padding: 1.5vh;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 #form-agregar input,
@@ -371,8 +371,7 @@ thead th:last-child {
     width: 25vw;
 }
 
-#descripcion-agregar,
-#descripcion-mod{
+textarea{
     width: 30vw;
     height: 15vh;
     border-radius: 0.5em;
@@ -383,17 +382,12 @@ thead th:last-child {
     margin-left: 1vw;
 }
 
-#lote-agregar,
-#lote-mod{
-    width: 10vw;
-}
-
 #tipo-agregar,
 #tipo-mod{
     width: 20vw;
 }
 
-#unidad-agregar,
+#unidad-add,
 #unidad-mod{
     width: 10vw;
     height: 3.5vh;
