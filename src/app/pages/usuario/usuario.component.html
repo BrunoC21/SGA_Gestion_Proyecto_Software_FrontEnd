@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuario</title>
+    <link rel="stylesheet" href="./usuario.component.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <section class="usuarios">
+        <div class="container-foto-nombre">
+            <div class="fondo-imagen">
+                <div class="real-fondo-imag">
+                    <img id="preview" src="">
+                </div>
+                <input type="file" id="fileInput" accept="image/*" hidden>
+                <label for="fileInput" id="btn-imagen"><i class='bx bx-image-add'></i></label>
+            </div>
+            <h2 id="nombre-usuario">Nombre1 + Nombre2 + apellido1 + apellido2</h2>
+        </div>
+
+        <div class="container-beneficios">
+            <div class="beneficios">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mis beneficios</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="ultimas-compras">
+                <div class="compras">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mis ultimas compras</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+
+        <div class="container-datos">
+            <div class="datos">
+                <h2>Mis datos</h2>
+                <h4 class="titulos-datos">Beneficiario</h4>
+                <p class="data-datos"></p>
+                <h4 class="titulos-datos">Fecha de nacimiento</h4>
+                <p class="data-datos"></p>
+                <h4 class="titulos-datos">Región</h4>
+                <p class="data-datos"></p>
+                <h4 class="titulos-datos">Comuna</h4>
+                <p class="data-datos"></p>
+                <h4 class="titulos-datos">Dirección</h4>
+                <p class="data-datos"></p>
+                <button id="btn-editar">Editar</button>
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+  const fileInput = document.getElementById('fileInput');
+  const preview = document.getElementById('preview');
+
+  fileInput.addEventListener('change', function () {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        preview.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
+</html>

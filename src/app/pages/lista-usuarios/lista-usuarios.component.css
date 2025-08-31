@@ -9,7 +9,7 @@ body{
     background-color: #DFDFDF;
 }
 
-.inventario{
+.lista-users{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -238,12 +238,16 @@ th {
 }
 
 #name{
-    padding: 10px 100px;
+    padding: 10px 120px;
 }
 
 /* Personalización específica de la columna de descripción */
-#description {
-    padding: 10px 200px;
+#date {
+    padding: 10px 10px;
+}
+
+#direccion{
+    padding: 10px 120px;
 }
 
 /* Cuerpo de la tabla vacío (por ahora sin estilos especiales) */
@@ -273,8 +277,13 @@ thead th:last-child {
     top: 5vh;
 }
 
+#pop-up-agregar{
+    height: 90vh;
+    top: 5vh;
+}
+
 #pop-up-eliminar{
-    height: 26vh;
+    height: 55vh;
 }
 
 .forms{
@@ -283,55 +292,43 @@ thead th:last-child {
     align-items: center;
 }
 
-.form-eliminar{
+#form-eliminar{
   width: 60vw;
   display: flex;
   flex-direction: column;
 }
 
-.form-eliminar label{
+#form-eliminar label{
     margin-top: 1vh;
     width: 40vw;
     padding: 2vh;
     font-size: 16px;
-}
-
-.imagen-producto-agregar,
-.imagen-producto-mod{
-    width: 28vw;
-    height: 73vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.imagen-producto-agregar img,
-.imagen-producto-mod img{
-    width: 14vw;
-    height: 14vw;
-}
-
-.fondo-imagen{
-    width: 15vw;
-    height: 15vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #a5a5a5;
-    border-radius: 1em;
-    margin-bottom: 1vw;
-}
-
-#form-agregar{
-    display: flex;
-    flex-direction: column;
-    height: 73vh;
-    width: 32vw;
     margin-left: 2vw;
 }
 
-#form-mod{
+#RUT-user{
+    width: 20vw;
+    margin-left: 5vw;
+    height: 4.5vh;
+    border-radius: 0.4em;
+    border: solid rgb(223, 223, 223) 0.15em;
+    outline: none;
+    padding: 1vh;
+}
+
+#causa-user{
+    width: 48vw;
+    height: 20vh;
+    border-radius: 0.4em;
+    border: solid rgb(223, 223, 223) 0.15em;
+    outline: none;
+    padding: 1vh;
+    margin-left: 5vw;
+    resize: none;
+}
+
+#form-mod,
+#form-agregar{
     display: flex;
     flex-direction: column;
     height: 80vh;
@@ -339,17 +336,16 @@ thead th:last-child {
     margin-left: 2vw;
 }
 
-#form-agregar label,
-#form-mod label{
-    width: 40vw;
+#form-mod label,
+#form-agregar label{
+    width: 20vw;
     padding: 1.5vh;
     font-size: 14px;
 }
 
 #form-agregar input,
-#form-mod input, 
-.form-eliminar input{
-    height: 4.5vh;
+#form-mod input{
+    height: 4vh;
     border-radius: 0.4em;
     border: solid rgb(223, 223, 223) 0.15em;
     outline: none;
@@ -357,54 +353,33 @@ thead th:last-child {
     margin-left: 1vw;
 }
 
-#label-nombre-agregar,
-#label-id-mod{
+#label-rut-agregar,
+#label-rut-mod{
     margin-top: 1vw;
 }
 
-#ID-eliminar{
+#rut-agregar,
+#rut-modificar{
+    width: 10vw;
+}
+
+#fecha-agregar,
+#fecha-mod{
+    width: 8vw;
+}
+
+#edad-agregar,
+#edad-mod{
+    width: 2.25vw;
+}
+
+#beneficio-agregar,
+#beneficio-mod,
+#region-agregar,
+#region-mod,
+#comuna-agregar,
+#comuna-mod{
     width: 15vw;
-}
-
-#nombre-agregar,
-#nombre-mod{
-    width: 25vw;
-}
-
-#descripcion-agregar,
-#descripcion-mod{
-    width: 30vw;
-    height: 15vh;
-    border-radius: 0.5em;
-    border: solid rgb(223, 223, 223) 0.15em;
-    padding: 1vh;
-    outline: none;
-    resize: none;
-    margin-left: 1vw;
-}
-
-#lote-agregar,
-#lote-mod{
-    width: 10vw;
-}
-
-#tipo-agregar,
-#tipo-mod{
-    width: 20vw;
-}
-
-#unidad-agregar,
-#unidad-mod{
-    width: 10vw;
-    height: 3.5vh;
-    outline: none;
-    margin-left: 1vw;
-    border-radius: 0.25em;
-}
-
-#stock-agregar,
-#stock-mod{
-    width: 10vw;
 }
 
 #btn-agregar{
@@ -412,11 +387,15 @@ thead th:last-child {
     height: 4vh;
     border-radius: 2em;
     margin-left: 26vw;
-    margin-top: -4vh;
     background-color: rgb(33, 179, 65);
     border: solid rgb(14, 150, 43) 2px;
     cursor: pointer;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
     color: white;
+    bottom: 1vw;
 }
 
 #btn-agregar:hover{
@@ -429,11 +408,16 @@ thead th:last-child {
     height: 4vh;
     border-radius: 2em;
     margin-left: 26vw;
-    margin-top: -4vh;
     background-color: rgb(42, 155, 221);
     border: solid rgb(34, 128, 182) 2px;
     cursor: pointer;
     color: white;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    bottom: 1vw;
 }
 
 #btn-mod:hover{
@@ -446,7 +430,7 @@ thead th:last-child {
     height: 4vh;
     border-radius: 2em;
     margin-left: 26vw;
-    margin-top: 1vh;
+    margin-top: 2vh;
     background-color: rgb(201, 61, 61);
     border: solid rgb(172, 27, 27) 2px;
     cursor: pointer;

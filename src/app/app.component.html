@@ -17,15 +17,37 @@
       <ul class="nav-links">
         <li><a href=""><i class='bx bx-cart'></i></a></li>
         <li><a href=""><i class='bx bxs-user-circle'></i></a></li>
-        <li><i class='bx bx-menu'></i></li>
+        <li><i class='bx bx-menu' onclick="openMenu()"></i></li>
       </ul>
     </nav> 
   </header>
   <div class="divisor"></div>
 
-  <section>
+
+<!-- Menú lateral desplegable -->
+<div id="side-menu-overlay" class="menu-overlay hidden" onclick="closeMenu()">
+  <div id="side-menu" class="side-menu" onclick="event.stopPropagation()">
+    <span class="close-btn" onclick="closeMenu()">&#10005;</span>
+    <nav class="side-menu-links">
+      <div class="cont-imag">
+        <img src="./images/icono.PNG" alt="">
+      </div>
+      <a href="#">Opción 1</a>
+      <a href="#">Opción 2</a>
+      <a href="#">Opción 3</a>
+      <a href="#">Opción 4</a>
+      <a href="#">Opción 5</a>
+      <a href="#">Opción 6</a>
+      <a href="#">Opción 7</a>
+    </nav>
+  </div>
+</div>
+
+
+  <section id="gestion-inventario">
         <app-gestion-inventario></app-gestion-inventario>
   </section>
+
   <footer>
     <div class="logo-footer">
       <img src="./images/icono.PNG" alt="">
@@ -55,6 +77,16 @@
 
    </footer>
   <div class="end-page">Todos los derechos reservados &#169;</div>
-</html>
 
+  <script>
+  function openMenu() {
+    document.getElementById('side-menu-overlay').classList.remove('hidden');
+  }
+
+  function closeMenu() {
+    document.getElementById('side-menu-overlay').classList.add('hidden');
+  }
+</script>
+
+</html> 
 <router-outlet />
